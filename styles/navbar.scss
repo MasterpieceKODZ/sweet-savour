@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Arizonia&family=Bungee+Shade&family=Fleur+De+Leah&family=Frijole&family=Henny+Penny&family=Lobster&family=Nosifer&family=Rouge+Script&family=Rubik+Wet+Paint&family=Rye&display=swap");
+@import "fonts";
+@import "colors";
+
+
+.navbar {
+	padding: 10px 20px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	background-color: transparent;
+}
+
+.brand {
+	font-family: $nosifer;
+}
+
+.logo {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+	font-size: 15px;
+}
+
+.sweet {
+	margin-right: 5px;
+	color: $primary;
+}
+
+.savour {
+	margin-left: 5px;
+	color: $secondary;
+}
