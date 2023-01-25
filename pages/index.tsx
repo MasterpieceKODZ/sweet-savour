@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
+import Slide1 from "../components/carousel/Slide1";
 
 const Home = () => {
 	return (
-		<div>
-			<Navbar />
+		<div className="home-root">
+			<Slide1 />
 		</div>
 	);
 };

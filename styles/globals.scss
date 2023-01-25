@@ -1,5 +1,13 @@
+@import "fonts";
+@import "colors";
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	font-family: sans-serif;
+}
+
+.home-root {
+	width: 100%;
+	height: auto;
 }

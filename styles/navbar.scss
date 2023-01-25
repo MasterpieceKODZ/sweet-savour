@@ -2,8 +2,8 @@
 @import "fonts";
 @import "colors";
 
-
 .navbar {
+	width: 100%;
 	padding: 10px 20px;
 	display: flex;
 	flex-wrap: nowrap;
@@ -11,6 +11,8 @@
 	align-items: center;
 	overflow: hidden;
 	background-color: transparent;
+	position: absolute;
+	top: 0px;
 }
 
 .brand {
