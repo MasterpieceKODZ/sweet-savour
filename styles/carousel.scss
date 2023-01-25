@@ -3,6 +3,11 @@
     height: 100vh;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .slide-dish-img {
