@@ -1,14 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import Navbar from "../Navbar";
+import { useSwiperSlide } from "swiper/react";
 import "animate.css";
 const Slide1 = () => {
+	const slide = useSwiperSlide();
+
 	return (
 		<div className="carousel-slide slide1">
 			<Navbar />
 			<div className="top-padding"></div>
 			<h3 className="slide1-intro-text">Have You tried our</h3>
 			{/* animation from animate.css */}
-			<h3 className="slide1-dish-name animate__animated animate__rubberBand animate__delay-1s animate__repeat-2">
+			<h3 className={`slide1-dish-name animate__animated ${ slide.isActive ? 'animate__rubberBand' : ""} animate__delay-1s animate__repeat-2`}>
 				Artichoke Spinach Dip
 			</h3>
 			<h3 className="slide1-intro-text">for appetizer...?</h3>

@@ -1,10 +1,9 @@
-import Slide1 from "../components/carousel/Slide1";
-import Slide2 from "../components/carousel/Slide2";
+import Container from "../components/carousel/Container";
 
 const Home = () => {
 	return (
 		<div className="home-root">
-			<Slide2 />
+			<Container />
 		</div>
 	);
 };

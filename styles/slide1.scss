@@ -67,3 +67,26 @@
     background-color: $secondary;
     color: white;
 }
+
+@media screen and (min-height : 650px) {
+
+    .slide1-intro-text {
+        font-size: 25px;
+    }
+
+    .slide1-intro-text:last-of-type {
+        margin-bottom: 15px;
+    }
+
+    .slide1-dish-name {
+        font-size: 30px;
+        margin-top: 5px;
+    }
+
+    .slide1-description-text {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        padding-inline: 10px;
+    }
+}
