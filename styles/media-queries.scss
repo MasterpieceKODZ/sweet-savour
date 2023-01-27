@@ -1,0 +1,200 @@
+/* CAROUSEL */
+@media screen and (min-height: 650px) {
+    .carousel-slide {
+        padding-bottom: 30px;
+    }
+}
+
+@media screen and (min-height: 750px) {
+    .carousel-slide {
+        padding-bottom: 90px;
+    }
+}
+
+/* SLIDE 1 */
+
+@media screen and (min-height : 650px) {
+
+    .slide1-intro-text {
+        font-size: 25px;
+    }
+
+    .slide1-intro-text:last-of-type {
+        margin-bottom: 15px;
+    }
+
+    .slide1-dish-name {
+        font-size: 30px;
+        margin-top: 5px;
+    }
+
+    .slide1-description-text {
+        font-size: 20px;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        padding-inline: 10px;
+    }
+}
+
+/* SLIDE 2 */
+
+@media screen and (min-height: 650px) {
+
+    .slide2-intro-text {
+        font-size: 18px;
+
+    }
+
+    .slide2-intro-text:last-of-type {
+        margin-bottom: 10px;
+    }
+
+    .slide2-dish-name {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .slide2-description-text {
+        font-size: 23px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-inline: 15px;
+    }
+
+    .slide2-order-btn {
+        padding: 2px 20px;
+        margin-top: 10px;
+        font-size: 25px;
+    }
+}
+
+/* SLIDE 3 */
+
+@media screen and (min-height: 650px) {
+    .slide3-intro-text {
+        font-size: 22px;
+
+    }
+
+    .slide3-intro-text:last-of-type {
+        margin-bottom: 15px;
+    }
+
+    .slide3-dish-name {
+        font-size: 32px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-inline: 10px;
+    }
+
+    .slide3-description-text {
+        font-size: 22px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-inline: 10px;
+    }
+
+    .slide3-order-btn {
+        margin-top: 8px;
+        font-size: 20px;
+    }
+
+    .slide3-lick {
+        width: 80px;
+        height: 80px;
+        bottom: 10px;
+        left: 15px;
+    }
+}
+
+/* HOMEPAGE CAROUSEL */
+
+@media screen and (min-width: 501px) {
+    .carousel {
+        display: none;
+    }
+
+    .dashboard-root {
+        display: grid;
+        grid-template-rows: auto 1fr;
+    }
+
+    .navbar {
+        position: relative;
+    }
+}
+
+/* HOMPAGE DASHBOARD */
+@media screen and (min-width: 840px) {
+
+    /* dish 1 *************************************************************/
+    .dish-1 {
+        width: 50%;
+        padding: 20px 5px;
+    }
+
+    .dashboard-dish1-intro-text {
+        font-size: 30px;
+    }
+
+    .dashboard-dish1-name {
+        font-size: 45px;
+    }
+
+    .dashboard-dish1-chef-emoji {
+        margin-block: 30px;
+    }
+
+    .dashboard-dish1-description-text {
+        font-size: 20px;
+    }
+
+    .dashboard-dish1-order-btn {
+        margin-top: 20px;
+        border-radius: 20px;
+        padding: 5px 25px;
+        font-size: 20px;
+    }
+
+    /* dish 2 and 3 host */
+    .dish2n3-host {
+        width: 50%;
+    }
+
+    /******** dish 2 ***********************************************/
+
+    .dashboard-dish2-name {
+        font-size: 30px;
+    }
+
+    .dashboard-love-emoji {
+        margin-block: 10px;
+    }
+
+    .dashboard-dish2-description {
+        font-size: 18px;
+    }
+
+    .dashboard-dish2-order-btn {
+        margin-top: 10px;
+        padding-inline: 15px;
+    }
+
+    /******** dish 3 ***********************************************/
+    .dashboard-dish3-name {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .dashboard-dish3-description {
+        font-size: 22px;
+    }
+
+    .dashboard-dish3-order-btn {
+        margin-top: 10px;
+        padding: 5px 15px;
+        font-size: 17px;
+    }
+
+}

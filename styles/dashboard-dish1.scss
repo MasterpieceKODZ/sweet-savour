@@ -1,0 +1,74 @@
+@import "fonts";
+@import "colors";
+
+.dish-1 {
+    width: 45%;
+    height: 100%;
+    border: solid 2px $secondary;
+    border-radius: 7px;
+    background: url("/assets/dishes/appetizers/cheesy-bread/cheesy-bread-pic.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 20px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard-dish1-intro-text {
+    text-align: center;
+    font-family: $arizonia;
+    color: aliceblue;
+    text-shadow: 0px 0px 3px black;
+    font-size: 25px;
+}
+
+.dashboard-dish1-name {
+    text-align: center;
+    color: $secondary;
+    font-family: $frijole;
+    font-size: 40px;
+    text-shadow: 0px 0px 3px black;
+}
+
+.dashboard-dish1-chef-emoji {
+    margin-block: 30px;
+}
+
+.dashboard-dish1-description-text {
+    text-align: center;
+    font-family: $hennyPenny;
+    color: rgb(216, 226, 233);
+    text-shadow: 0px 0px 3px black;
+}
+
+.dashboard-dish1-order-btn {
+    display: block;
+    margin-top: 20px;
+    background-color: $secondary;
+    color: aliceblue;
+    border-radius: 20px;
+    padding: 5px 25px;
+    font-family: $bilbo;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0px 0px 5px black;
+    animation: dish1Btn .5s linear .3s infinite;
+}
+
+@keyframes dish1Btn {
+
+    0% {
+        border: dashed 2px $primary;
+    }
+
+    50% {
+        border: dotted 2px $primary;
+    }
+
+    100% {
+        border: dashed 2px $primary;
+    }
+}

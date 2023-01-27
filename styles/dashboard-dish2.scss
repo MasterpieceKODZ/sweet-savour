@@ -1,0 +1,64 @@
+@import "colors";
+@import "fonts";
+
+.dish-2 {
+    border: solid 2px $primary;
+    background: url("/assets/dishes/dessert/frozen-strawberry-trifle/frozen-strawberry-trifle-pic.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.dashboard-dish2-name {
+    text-align: center;
+    font-family: $rubikWetPaint;
+    color: rgb(255, 117, 140);
+    text-shadow: 0px 0px 3px black;
+    font-size: 25px;
+}
+
+.dashboard-love-emoji {
+    margin-block: 10px;
+}
+
+.dashboard-dish2-description {
+    text-align: center;
+    color: $primary;
+    font-family: $lobster;
+    text-shadow: 0px 0px 3px black;
+    font-size: 16px;
+}
+
+.dashboard-dish2-order-btn {
+    margin-top: 10px;
+    padding-inline: 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: $bungee;
+    box-shadow: 2px 2px 3px black;
+    animation: dish2Btn 1.5s linear .3s infinite;
+    animation-direction: reverse;
+}
+
+@keyframes dish2Btn {
+
+    0% {
+        color: rgb(253, 111, 135);
+        background-color: white;
+    }
+
+    50% {
+        color: white;
+        background-color: rgb(253, 111, 135);
+    }
+
+    100% {
+        color: rgb(253, 111, 135);
+        background-color: white;
+    }
+}

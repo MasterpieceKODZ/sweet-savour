@@ -9,7 +9,7 @@ import "swiper/scss/effect-cube";
 
 const Container = () => {
 	return (
-		<div>
+		<div className="carousel">
 			<div className="slide-host">
 				<Swiper
 					spaceBetween={0}
@@ -18,8 +18,7 @@ const Container = () => {
 					effect="cube"
 					cubeEffect={{
 						slideShadows: false,
-						shadowOffset: 5,
-						shadowScale: 0.3,
+						shadow: false,
 					}}
 					autoplay={{ delay: 4000 }}
 					autoHeight={true}

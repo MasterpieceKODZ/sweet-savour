@@ -31,9 +31,9 @@
     text-align: center;
     font-family: $fleurDeLeah;
     font-size: 21px;
-    margin-top: 5px;
+    margin-top: 2px;
     color: $primary;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
     letter-spacing: 1.5px;
 }
 
@@ -44,12 +44,12 @@
 .slide3-description-text {
     text-align: center;
     font-family: $arizonia;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    margin-top: 8px;
+    margin-bottom: 8px;
     color: rgb(104, 104, 104);
     text-shadow: 0px 0px 3px greenyellow;
-    margin-inline: 15px;
+    margin-inline: 10px;
 }
 
 .slide3-order-btn {
@@ -58,7 +58,7 @@
     border: solid 2px $primary;
     border-radius: 20px;
     padding: 2px 20px;
-    margin-top: 5px;
+    margin-top: 2px;
     font-family: $rye;
     font-size: 18px;
 }
@@ -66,41 +66,4 @@
 .slide3-order-btn:hover {
     background-color: $primary;
     color: white;
-}
-
-@media screen and (min-height: 650px) {
-    .slide3-intro-text {
-        font-size: 22px;
-
-    }
-
-    .slide3-intro-text:last-of-type {
-        margin-bottom: 15px;
-    }
-
-    .slide3-dish-name {
-        font-size: 32px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-inline: 10px;
-    }
-
-    .slide3-description-text {
-        font-size: 22px;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        margin-inline: 10px;
-    }
-
-    .slide3-order-btn {
-        margin-top: 10px;
-        font-size: 20px;
-    }
-
-    .slide3-lick {
-        width: 80px;
-        height: 80px;
-        bottom: 10px;
-        left: 15px;
-    }
 }

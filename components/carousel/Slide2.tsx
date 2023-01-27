@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import Navbar from "../Navbar";
 import "animate.css";
+import Image from "next/image";
+import Link from "next/link";
 import { useSwiperSlide } from "swiper/react";
 
 const Slide2 = () => {
@@ -18,20 +20,16 @@ const Slide2 = () => {
 				Chocolate Bread And Butter Pudding
 			</h3>
 			<h3 className="slide2-intro-text"> for dessert and thank us later!</h3>
-			<div
-				style={{
-					width: "minContent",
-					height: "minContent",
-					position: "relative",
-					overflow: "hidden",
-				}}>
+			<div className="slide-dish-img-host">
 				<img
 					className="slide-dish-img slide2-img"
-					src="https://i.ibb.co/sQNkhk8/chocolate-bread-pic.jpg"
+					src="/assets/dishes/dessert/chocolate-bread-and-butter-pudding/chocolate-bread-pic.jpg"
 					alt="Chocolate bread and butter pudding"
 				/>
-				<img
-					src="https://i.ibb.co/GFgrSfS/amazing.webp"
+				<Image
+					width={60}
+					height={60}
+					src="/assets/amazing.webp"
 					alt="love struck emoji"
 					className="slide2-love-emoji"
 				/>
@@ -42,9 +40,13 @@ const Slide2 = () => {
 				yummy...😋
 			</h5>
 			{/* animation from animate.css */}
-			<button className="btn-order slide2-order-btn animate__animated animate__pulse animate__delay-1s animate__infinite">
-				Order Now
-			</button>
+			<Link
+				href={"/menulist"}
+				passHref>
+				<button className="btn-order slide2-order-btn animate__animated animate__pulse animate__delay-1s animate__infinite">
+					Order Now
+				</button>
+			</Link>
 		</div>
 	);
 };

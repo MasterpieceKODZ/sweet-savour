@@ -1,0 +1,66 @@
+@import "colors";
+@import "fonts";
+
+.dish-3 {
+    border: solid 2px aliceblue;
+    background: url("/assets/dishes/main/slow-cooker-bbq-ribs/crock-pot-ribs-pic.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.dashboard-dish3-name {
+    text-align: center;
+    font-family: $rye;
+    color: $primary;
+    text-shadow: 0px 0px 3px black;
+    font-size: 30px;
+}
+
+/* .dashboard-lick-emoji {
+    margin-block: 10px;
+} */
+
+.dashboard-dish3-description {
+    text-align: center;
+    color: aliceblue;
+    font-family: $rougeScript;
+    text-shadow: 0px 0px 3px black;
+    font-size: 20px;
+}
+
+.dashboard-dish3-order-btn {
+    margin-top: 10px;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-family: $frijole;
+    font-size: 15px;
+    background-color: transparent;
+    box-shadow: 2px 2px 3px black;
+    animation: dish3Btn 1.5s linear .3s infinite;
+    animation-direction: reverse;
+}
+
+@keyframes dish3Btn {
+
+    0% {
+
+        border: solid 2px $secondary;
+        color: $secondary;
+    }
+
+    50% {
+        border: solid 2px $primary;
+        color: $primary;
+    }
+
+    100% {
+        border: solid 2px $secondary;
+        color: $secondary;
+    }
+}
