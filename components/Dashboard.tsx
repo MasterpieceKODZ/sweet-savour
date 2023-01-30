@@ -7,6 +7,7 @@ const Dashboard = () => {
 	return (
 		<div className="dashboard-root">
 			<Navbar />
+			<div className="top-padding"></div>
 			<div className="dashboard-host">
 				<div className="dish dish-1">
 					<h3 className="dashboard-dish1-intro-text">

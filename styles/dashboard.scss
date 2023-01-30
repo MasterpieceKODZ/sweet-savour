@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100Vh;
     display: none;
+    position: relative;
     background: radial-gradient(closest-corner at 50% 5%, rgba($primary, 0.4), rgba($secondary, 0.5));
 }
 

@@ -1,0 +1,82 @@
+@import "colors";
+@import "fonts";
+
+.dish-host {
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px grey;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.dish-data-host {
+    padding: 10px;
+}
+
+.dish-img {
+    width: 100% !important;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.name-price-host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-category-host {
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.list-dish-price {
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.list-dish-name {
+    font-family: $arizonia;
+    color: $primary;
+    font-size: 25px;
+}
+
+.list-dish-category {
+    font-family: $lobster;
+    color: $secondary;
+    font-size: 13px;
+}
+
+.list-dish-price {
+    font-family: $bungee;
+    font-size: 12px;
+    color: $secondary;
+}
+
+.list-dish-description {
+    font-family: $lobster;
+    text-align: center;
+    color: rgb(66, 3, 3);
+    padding-block: 5px;
+    font-size: 13px;
+}
+
+.pref-inp {
+    outline: solid 1.5px $primary;
+    border: solid 1.5px $primary;
+    display: block;
+    margin-inline: auto;
+    border-radius: 5px;
+    margin-bottom: 7px;
+}
+
+.btn-add {
+    display: block;
+    margin-inline: auto;
+    background-color: $secondary;
+    color: wheat;
+    font-family: $lobster;
+    border-radius: 20px;
+    border: unset;
+    padding: 3px 10px;
+}
