@@ -1,0 +1,126 @@
+@import "fonts";
+@import "colors";
+
+.menulist-root {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+}
+
+.menu-host {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.menu-tab-layout {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    z-index: 999;
+
+    .tab {
+        flex-basis: 50%;
+        flex-grow: 1;
+        cursor: pointer;
+        position: absolute;
+        top: 0px;
+        height: 105%;
+        width: 46%;
+        z-index: 9999;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h4 {
+            font-family: $lobster;
+            color: gray;
+        }
+    }
+}
+
+.food-tab {
+    left: 8px;
+}
+
+.food-tab.active {
+    background-color: rgb(253, 240, 215);
+    border-top: solid 2px $secondary;
+    border-left: solid 2px $secondary;
+    border-right: solid 2px $secondary;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    h4 {
+        color: $secondary;
+    }
+}
+
+.drink-tab {
+    right: 8px;
+}
+
+.drink-tab.active {
+    background-color: rgb(255, 233, 233);
+    border-top: solid 2px $primary;
+    border-left: solid 2px $primary;
+    border-right: solid 2px $primary;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    h4 {
+        color: $primary;
+    }
+}
+
+.menu-list-host {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: hidden;
+    padding-inline: 8px;
+    padding-bottom: 8px;
+    z-index: -999;
+}
+
+.list {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: -99;
+}
+
+.food-list {
+    background-color: rgb(253, 240, 215);
+    border: solid 2px $secondary;
+    padding: 15px 10px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.drink-list {
+    background-color: rgb(255, 233, 233);
+    border: solid 2px $primary;
+    padding: 15px 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.list-show {
+    display: block;
+}
+
+.list-hide {
+    display: none;
+}

@@ -9,8 +9,15 @@ import "../styles/dashboard.scss";
 import "../styles/dashboard-dish1.scss";
 import "../styles/dashboard-dish2.scss";
 import "../styles/dashboard-dish3.scss";
+import "../styles/menulist.scss";
 import "../styles/media-queries.scss";
+import { Provider } from "react-redux";
+import reduxStore from "../redux/reduxStore";
 
 export default function App({ Component, pageProps }: AppProps) {
-	return <Component {...pageProps} />;
+	return (
+		<Provider store={reduxStore}>
+			<Component {...pageProps} />
+		</Provider>
+	);
 }

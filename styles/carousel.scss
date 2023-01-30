@@ -1,5 +1,6 @@
 .carousel {
     display: block;
+    overflow: hidden;
 }
 
 .slide-host {
@@ -32,9 +33,4 @@
     margin-inline: auto;
     border-radius: 10px;
     object-fit: cover;
-}
-
-.top-padding {
-    min-height: 60px;
-    min-width: 100%;
 }
