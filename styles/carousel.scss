@@ -3,6 +3,10 @@
     overflow: hidden;
 }
 
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
 .slide-host {
     width: 100%;
     height: auto;

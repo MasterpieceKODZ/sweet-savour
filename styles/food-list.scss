@@ -10,6 +10,7 @@
 
 .dish-data-host {
     padding: 10px;
+    overflow: hidden;
 }
 
 .dish-img {
@@ -39,6 +40,7 @@
     font-family: $arizonia;
     color: $primary;
     font-size: 25px;
+    text-shadow: 0px 0px .7px black;
 }
 
 .list-dish-category {
@@ -68,9 +70,10 @@
     margin-inline: auto;
     border-radius: 5px;
     margin-bottom: 7px;
+    resize: none;
 }
 
-.btn-add {
+.btn-add-food {
     display: block;
     margin-inline: auto;
     background-color: $secondary;
