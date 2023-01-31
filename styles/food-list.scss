@@ -55,14 +55,6 @@
     color: $secondary;
 }
 
-.list-dish-description {
-    font-family: $lobster;
-    text-align: center;
-    color: rgb(66, 3, 3);
-    padding-block: 5px;
-    font-size: 13px;
-}
-
 .pref-inp {
     outline: solid 1.5px $primary;
     border: solid 1.5px $primary;
@@ -70,6 +62,7 @@
     margin-inline: auto;
     border-radius: 5px;
     margin-bottom: 7px;
+    margin-top: 10px;
     resize: none;
 }
 
@@ -82,4 +75,39 @@
     border-radius: 20px;
     border: unset;
     padding: 3px 10px;
+    cursor: pointer;
+}
+
+.food-filter-host {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden;
+    background-color: $secondary;
+    padding: 5px 5px;
+    box-shadow: 0px -2px 3px grey;
+    transition: all .7s ease;
+}
+
+.food-filter {
+    background-color: rgb(248, 109, 123);
+    border: solid 2px rgb(133, 0, 13);
+    border-radius: 5px;
+    padding: 3px 13px;
+    color: aliceblue;
+    font-family: $lobster;
+    text-align: center;
+    cursor: pointer;
+}
+
+.food-filter-host.show {
+    bottom: 0px;
+}
+
+.food-filter-host.hide {
+    bottom: -100%;
 }

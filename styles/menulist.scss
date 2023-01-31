@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: space-around;
     position: relative;
-    z-index: 999;
+    z-index: 99;
 
     .tab {
         flex-basis: 50%;
@@ -35,7 +35,6 @@
         top: 0px;
         height: calc(100% + 2px);
         width: 46%;
-        z-index: 9999;
         text-align: center;
         display: flex;
         justify-content: center;
@@ -50,6 +49,17 @@
 
 .food-tab {
     left: 8px;
+    position: relative;
+}
+
+.food-filter-btn {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    color: gray;
+    width: min-content;
+    height: min-content;
+    cursor: pointer;
 }
 
 .food-tab.active {
@@ -63,10 +73,25 @@
     h4 {
         color: $secondary;
     }
+
+    .food-filter-btn {
+        color: $secondary;
+    }
 }
 
 .drink-tab {
     right: 8px;
+    position: relative;
+}
+
+.drink-filter-btn {
+    position: absolute;
+    top: 7px;
+    left: 10px;
+    color: gray;
+    width: min-content;
+    height: min-content;
+    cursor: pointer;
 }
 
 .drink-tab.active {
@@ -78,6 +103,10 @@
     border-top-right-radius: 5px;
 
     h4 {
+        color: $primary;
+    }
+
+    .drink-filter-btn {
         color: $primary;
     }
 }
@@ -96,7 +125,7 @@
 .list {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    position: relative;
 }
 
 .list-wrapper {
@@ -117,6 +146,7 @@
     background-color: rgb(253, 240, 215);
     border: solid 2px $secondary;
     padding-top: 15px;
+    overflow: hidden;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -125,18 +155,11 @@
 .drink-list {
     background-color: rgb(255, 233, 233);
     border: solid 2px $primary;
-    padding-inline: 8px;
     padding-top: 15px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    scrollbar-width: 0px;
+    overflow: hidden;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-}
-
-.drink-list::-webkit-scrollbar {
-    display: none;
 }
 
 .list-show {

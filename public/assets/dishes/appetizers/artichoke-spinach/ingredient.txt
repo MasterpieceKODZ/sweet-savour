@@ -1,1 +1,1 @@
-artichoke,spinach,chesse,cream,mayonise,milk,garlic,pepper,salts
+artichoke,spinach,chesse,cream,mayonnise,milk,garlic,pepper,salts

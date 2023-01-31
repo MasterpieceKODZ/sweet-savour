@@ -9,7 +9,7 @@
     box-shadow: 0px 0px 2px grey;
     border-radius: 10px;
     overflow: hidden;
-    margin-block: 20px;
+    margin: 20px 8px;
 }
 
 .drink-img {
@@ -54,4 +54,53 @@
     color: rgb(255, 233, 233);
     font-family: $lobster;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+// .drink-list-host {
+//     height: 100%;
+//     width: 100%;
+//     overflow-x: hidden;
+//     overflow-y: scroll;
+//     scroll-behavior: smooth;
+//     scrollbar-width: none;
+// }
+
+// .drink-list-host::-webkit-scrollbar {
+//     display: none;
+// }
+
+.drink-filter-host {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow-x: hidden;
+    background-color: $primary;
+    padding: 5px 5px;
+    box-shadow: 0px -2px 3px grey;
+    transition: all .7s ease;
+}
+
+.drink-filter {
+    width: 40%;
+    background-color: rgb(255, 192, 98);
+    border: solid 2px rgb(165, 69, 0);
+    border-radius: 5px;
+    padding: 3px 13px;
+    color: aliceblue;
+    font-family: $lobster;
+    text-align: center;
+    cursor: pointer;
+}
+
+.drink-filter-host.show {
+    bottom: 0px;
+}
+
+.drink-filter-host.hide {
+    bottom: -100%;
 }

@@ -1,3 +1,4 @@
+import "../styles/Font Awesome/css/all.css";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
 import "../styles/navbar.scss";
