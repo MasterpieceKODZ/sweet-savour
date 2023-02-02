@@ -1,3 +1,14 @@
+import "@fontsource/arizonia";
+import "@fontsource/bungee-shade";
+import "@fontsource/frijole";
+import "@fontsource/henny-penny";
+import "@fontsource/lobster";
+import "@fontsource/fleur-de-leah";
+import "@fontsource/nosifer";
+import "@fontsource/rouge-script";
+import "@fontsource/rubik-wet-paint";
+import "@fontsource/rye";
+import "@fontsource/bilbo";
 import "../styles/Font Awesome/css/all.css";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";

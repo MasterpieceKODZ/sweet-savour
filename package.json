@@ -9,6 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/arizonia": "^4.5.9",
+    "@fontsource/bilbo": "^4.5.10",
+    "@fontsource/bungee-shade": "^4.5.10",
+    "@fontsource/fleur-de-leah": "^4.5.8",
+    "@fontsource/frijole": "^4.5.10",
+    "@fontsource/henny-penny": "^4.5.10",
+    "@fontsource/lobster": "^4.5.11",
+    "@fontsource/nosifer": "^4.5.7",
+    "@fontsource/rouge-script": "^4.5.10",
+    "@fontsource/rubik-wet-paint": "^4.5.4",
+    "@fontsource/rye": "^4.5.10",
     "@next/font": "13.1.5",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/node": "18.11.18",

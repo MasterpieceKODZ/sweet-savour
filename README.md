@@ -11,7 +11,7 @@ In this project I have used...
 - SwiperJS
 - Firebase
 - fontawesome CSS
-- Google Fonts
+- Fontsource (vercel)
 - Animate CSS
 
 On a window or screen less than 501px the home page is a autoplay carousel showing some new dishes promotion and on larger screens _above 500px_ homepage is a grid layout dashboard also with promotion content
