@@ -9,9 +9,9 @@ import {
 	actionHideDrinkFilter,
 } from "../redux/action-creators";
 import Image from "next/image";
-import { useEffect } from "react";
+import { getApp, getApps } from "firebase-admin/app";
 
-const Menulist = () => {
+const Menulist = ({ foodList }: any) => {
 	// retrieve show list state from redux store to determine which list to show (food/drinks)
 	const showList = useAppSelector((state) => state.list.showList);
 	const foodFilter = useAppSelector((state) => state.list.foodFilter);
@@ -36,17 +36,6 @@ const Menulist = () => {
 		}
 	};
 
-	const foodList = [
-		{ id: "21", name: "Beans" },
-		{ id: "19", name: "Rice" },
-		{ id: "56", name: "Cocoa" },
-	];
-
-	const drinkList = [
-		{ id: "121", name: "pepsi" },
-		{ id: "198", name: "fanta" },
-		{ id: "156", name: "sprite" },
-	];
 	return (
 		<div className="menulist-root">
 			<Navbar />
@@ -78,27 +67,27 @@ const Menulist = () => {
 					{showList == "food" ? (
 						<div className="list food-list">
 							<div className="list-wrapper">
-								{foodList.map((item) => (
+								{foodList.map((item: any) => (
 									<div
 										className="dish-host"
 										key={item.id}>
 										<Image
 											width={280}
 											height={140}
-											src={
-												"/assets/dishes/appetizers/cream-cheese-dip/cream-cheese-dip-pic.jpg"
-											}
-											alt="cream cheese dip image"
+											src={`${item.image}`}
+											alt={`${item.name}`}
 											className="dish-img"
 											priority
 										/>
 										<div className="dish-data-host">
 											<div className="name-price-host">
 												<div className="name-category-host">
-													<h3 className="list-dish-name">Cream Cheese Dip</h3>
-													<h6 className="list-dish-category">appetizer</h6>
+													<h3 className="list-dish-name">{item.name}</h3>
+													<h6 className="list-dish-category">
+														{item.category}
+													</h6>
 												</div>
-												<div className="list-dish-price">$40.55</div>
+												<div className="list-dish-price">${item.price}</div>
 											</div>
 											<textarea
 												id="cream-cheese-dip-pref"
@@ -138,7 +127,7 @@ const Menulist = () => {
 									<Image
 										width={120}
 										height={150}
-										src="/assets/champagne.jpg"
+										src="/assets/drinks/wine/champagne.jpg"
 										alt="a bottle of champagne"
 										className="drink-img"
 										priority
@@ -155,7 +144,7 @@ const Menulist = () => {
 									<Image
 										width={120}
 										height={150}
-										src="/assets/champagne.jpg"
+										src="/assets/drinks/wine/champagne.jpg"
 										alt="a bottle of champagne"
 										className="drink-img"
 										priority
@@ -172,7 +161,7 @@ const Menulist = () => {
 									<Image
 										width={120}
 										height={150}
-										src="/assets/champagne.jpg"
+										src="/assets/drinks/wine/champagne.jpg"
 										alt="a bottle of champagne"
 										className="drink-img"
 										priority
@@ -203,3 +192,37 @@ const Menulist = () => {
 };
 
 export default Menulist;
+
+export async function getServerSideProps() {
+	const admin = require("firebase-admin");
+	const { getFirestore } = require("firebase-admin/firestore");
+
+	const serviceAccount = require(`../sweet-savour-c60fcbe0888a.json`);
+
+	// initialize default app if no app exist else get the existing default app
+	const app = !getApps().length
+		? admin.initializeApp({
+				credential: admin.credential.cert(serviceAccount),
+		  })
+		: getApp("[DEFAULT]");
+
+	const db = getFirestore();
+
+	const foodListRef = db.collection("food list");
+	const snapshot = await foodListRef.get();
+
+	// snapshot cannot be iterated through on the client side hence extract all document data and their ids into foodList array and return foodList as a prop
+	const foodList: any = [];
+	snapshot.forEach((doc: any) => {
+		foodList.push({
+			...doc.data(),
+			id: doc.id,
+		});
+	});
+
+	return {
+		props: {
+			foodList,
+		},
+	};
+}
