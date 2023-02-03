@@ -140,6 +140,7 @@
     bottom: 0px;
     z-index: 99;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     overflow-x: hidden;
@@ -149,10 +150,21 @@
     transition: all .7s ease;
 }
 
+.food-filter-options {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-x: hidden;
+    padding: 5px 5px;
+}
+
 .food-filter {
+    height: min-content;
     background-color: rgb(248, 109, 123);
     border: solid 2px rgb(133, 0, 13);
     border-radius: 5px;
+    font-size: 15px;
     padding: 3px 13px;
     color: aliceblue;
     font-family: $lobster;
@@ -166,4 +178,91 @@
 
 .food-filter-host.hide {
     bottom: -100%;
+}
+
+.food-filter-console {
+    overflow: hidden;
+    max-height: 0px;
+    transition: all .5s linear;
+    position: relative;
+    background-color: wheat;
+    color: $secondary;
+    border-radius: 8px;
+}
+
+.food-type-close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.food-type {
+    display: block;
+    font-family: $lobster;
+}
+
+.food-type:not(:last-of-type) {
+    margin-bottom: 6px;
+}
+
+.food-type-check {
+    margin-right: 10px;
+}
+
+.food-price {
+    display: inline-block;
+    margin-inline: 5px;
+    font-family: $lobster;
+}
+
+.food-price-inp {
+    width: 90px;
+    border-radius: 4px;
+    border: solid 2px $primary;
+    outline-color: $primary;
+}
+
+.food-price-inp:first-of-type {
+    margin-left: 5px;
+}
+
+.food-price-inp:last-of-type {
+    margin-right: 5px;
+}
+
+.btn-done-food-filter {
+    display: block;
+    margin-inline: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 3px 20px;
+    background-color: $secondary;
+    border: solid 2px $secondary;
+    border-radius: 5px;
+    font-family: $lobster;
+    color: aliceblue;
+}
+
+.food-allergy-console {
+    h4 {
+        text-align: center;
+        font-family: $lobster;
+    }
+}
+
+.food-allergy-inp {
+    width: 90%;
+    outline: solid 1.5px $primary;
+    border: solid 1.5px $primary;
+    border-radius: 10px;
+    display: block;
+    margin-inline: auto;
+    resize: none;
+    margin-block: 10px;
+}
+
+.food-filter-console.show {
+    max-height: max-content;
+    padding: 15px 7px;
 }

@@ -18,7 +18,16 @@ const Menulist = ({ foodList, drinkList }: any) => {
 	const drinkFilter = useAppSelector((state) => state.list.drinkFilter);
 	const dispatch: any = useAppDispatch();
 
-	// toggle the visibilty of the bottom filter options navbar on the food menu list
+	// retrieve all the food categories without repetition
+	const foodCategories: [] = [];
+
+	foodList.forEach((dish: any) => {
+		if (foodCategories.indexOf(dish.category as never) < 0) {
+			foodCategories.push(dish.category as never);
+		}
+	});
+
+	// toggle the visibilty of the filter options bottom navbar on the food menu list
 	const showHideFoodFilter = () => {
 		if (foodFilter == "hidden") {
 			dispatch(actionShowFoodFilter());
@@ -27,13 +36,27 @@ const Menulist = ({ foodList, drinkList }: any) => {
 		}
 	};
 
-	// toggle the visibilty of the bottom filter options navbar on the drink menu list
+	// toggle the visibilty of the filter options bottom navbar on the drink menu list
 	const showHideDrinkFilter = () => {
 		if (drinkFilter == "hidden") {
 			dispatch(actionShowDrinkFilter());
 		} else {
 			dispatch(actionHideDrinkFilter());
 		}
+	};
+
+	//open the active filter option console and closes the rest
+	const showFilterOption = (activeConsole: string) => {
+		document.querySelectorAll(".food-filter-console").forEach((elm) => {
+			elm.classList.remove("show");
+		});
+
+		document.querySelector(`.${activeConsole}`)?.classList.add("show");
+	};
+
+	// close the active filter option console
+	const closeFilterConsole = (activeConsole: string) => {
+		document.querySelector(`.${activeConsole}`)?.classList.remove("show");
 	};
 
 	return (
@@ -156,10 +179,79 @@ const Menulist = ({ foodList, drinkList }: any) => {
 								className={`food-filter-host ${
 									foodFilter == "showing" ? "show" : "hide"
 								}`}>
-								<div className="food-filter food-filter-type">Type</div>
-								<div className="food-filter food-filter-price">Price</div>
-								<div className="food-filter food-filter-allergy">
-									Exclude Dishes With..
+								<div className="food-filter-console-host">
+									<div className="food-filter-console food-type-console show">
+										{foodCategories.map((cate: any, i: number) => (
+											<label
+												key={i}
+												className="food-type">
+												<input
+													type="checkbox"
+													className="food-type-check"
+												/>
+												{cate}
+											</label>
+										))}
+										<i
+											className="fa-solid fa-circle-xmark food-type-close"
+											onClick={(e) =>
+												closeFilterConsole("food-type-console")
+											}></i>
+									</div>
+									<div className="food-filter-console food-price-console">
+										<label className="food-price food-price-min">
+											Min
+											<input
+												type="number"
+												className="food-price-inp"
+											/>
+										</label>
+										<label className="food-price food-price-max">
+											<input
+												type="number"
+												className="food-price-inp"
+											/>
+											Max
+										</label>
+										<button
+											className="btn-done-food-filter btn-food-price-done"
+											onClick={() => closeFilterConsole("food-price-console")}>
+											Done
+										</button>
+									</div>
+									<div className="food-filter-console food-allergy-console">
+										<h4>
+											Got an allergy? write it/them below separated with a comma
+										</h4>
+										<textarea
+											className="food-allergy-inp"
+											cols={30}
+											rows={2}></textarea>
+										<button
+											className="btn-done-food-filter btn-food-price-done"
+											onClick={() =>
+												closeFilterConsole("food-allergy-console")
+											}>
+											Done
+										</button>
+									</div>
+								</div>
+								<div className="food-filter-options">
+									<div
+										className="food-filter food-filter-type"
+										onClick={() => showFilterOption("food-type-console")}>
+										Type
+									</div>
+									<div
+										className="food-filter food-filter-price"
+										onClick={() => showFilterOption("food-price-console")}>
+										Price
+									</div>
+									<div
+										className="food-filter food-filter-allergy"
+										onClick={() => showFilterOption("food-allergy-console")}>
+										Exclude Dishes With..
+									</div>
 								</div>
 							</div>
 						</div>
