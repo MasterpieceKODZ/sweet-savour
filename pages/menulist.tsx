@@ -11,14 +11,12 @@ import {
 import Image from "next/image";
 import { getApp, getApps } from "firebase-admin/app";
 
-const Menulist = ({ foodList }: any) => {
+const Menulist = ({ foodList, drinkList }: any) => {
 	// retrieve show list state from redux store to determine which list to show (food/drinks)
 	const showList = useAppSelector((state) => state.list.showList);
 	const foodFilter = useAppSelector((state) => state.list.foodFilter);
 	const drinkFilter = useAppSelector((state) => state.list.drinkFilter);
 	const dispatch: any = useAppDispatch();
-
-	console.log(foodList);
 
 	// toggle the visibilty of the bottom filter options navbar on the food menu list
 	const showHideFoodFilter = () => {
@@ -50,6 +48,7 @@ const Menulist = ({ foodList }: any) => {
 						<h4>Food</h4>
 						<div
 							className="food-filter-btn"
+							title="show food filter"
 							onClick={showHideFoodFilter}>
 							<i className="fa-solid fa-filter"></i>
 						</div>
@@ -60,6 +59,7 @@ const Menulist = ({ foodList }: any) => {
 						<h4>Drink</h4>
 						<div
 							className="drink-filter-btn"
+							title="show drinks filter"
 							onClick={showHideDrinkFilter}>
 							<i className="fa-solid fa-filter"></i>
 						</div>
@@ -169,56 +169,26 @@ const Menulist = ({ foodList }: any) => {
 					{showList == "drink" ? (
 						<div className="list drink-list">
 							<div className="list-wrapper">
-								<div className="drink-host">
-									<Image
-										width={120}
-										height={150}
-										src="/assets/drinks/wine/champagne.jpg"
-										alt="a bottle of champagne"
-										className="drink-img"
-										priority
-									/>
-									<div className="drink-data-host">
-										<h4 className="drink-name">Champagne</h4>
-										<h6 className="drink-category">sparkling wine</h6>
-										<div className="drink-price">$167.60</div>
-										<button className="btn-add-drink">Add To My Tab</button>
+								{drinkList.map((item: any) => (
+									<div
+										className="drink-host"
+										key={`${item.id}`}>
+										<Image
+											width={120}
+											height={150}
+											src={`${item.image}`}
+											alt={`${item.name}`}
+											className="drink-img"
+											priority
+										/>
+										<div className="drink-data-host">
+											<h4 className="drink-name">{item.name}</h4>
+											<h6 className="drink-category">{item.category}</h6>
+											<div className="drink-price">{item.price}</div>
+											<button className="btn-add-drink">Add To My Tab</button>
+										</div>
 									</div>
-								</div>
-								{/* ======================================================== */}
-								<div className="drink-host">
-									<Image
-										width={120}
-										height={150}
-										src="/assets/drinks/wine/champagne.jpg"
-										alt="a bottle of champagne"
-										className="drink-img"
-										priority
-									/>
-									<div className="drink-data-host">
-										<h4 className="drink-name">Champagne</h4>
-										<h6 className="drink-category">sparkling wine</h6>
-										<div className="drink-price">$167.60</div>
-										<button className="btn-add-drink">Add To My Tab</button>
-									</div>
-								</div>
-								{/* ======================================================== */}
-								<div className="drink-host">
-									<Image
-										width={120}
-										height={150}
-										src="/assets/drinks/wine/champagne.jpg"
-										alt="a bottle of champagne"
-										className="drink-img"
-										priority
-									/>
-									<div className="drink-data-host">
-										<h4 className="drink-name">Champagne</h4>
-										<h6 className="drink-category">sparkling wine</h6>
-										<div className="drink-price">$167.60</div>
-										<button className="btn-add-drink">Add To My Tab</button>
-									</div>
-								</div>
+								))}
 							</div>
 							<div
 								className={`drink-filter-host ${
@@ -254,6 +224,7 @@ export async function getServerSideProps() {
 
 	const db = getFirestore();
 
+	// fetch foodlist data from firebase firestore
 	const foodListRef = db.collection("food list");
 	const snapshot = await foodListRef.get();
 
@@ -266,9 +237,23 @@ export async function getServerSideProps() {
 		});
 	});
 
+	// fetch drinks data from firestore
+	const drinkListRef = db.collection("drink list");
+	const drinksSnapshot = await drinkListRef.get();
+
+	// extract drinks raw data from drinksSnapshot
+	const drinkList: any = [];
+	drinksSnapshot.forEach((doc: any) => {
+		drinkList.push({
+			...doc.data(),
+			id: doc.id,
+		});
+	});
+
 	return {
 		props: {
 			foodList,
+			drinkList,
 		},
 	};
 }

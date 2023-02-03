@@ -9,6 +9,7 @@ import "@fontsource/rouge-script";
 import "@fontsource/rubik-wet-paint";
 import "@fontsource/rye";
 import "@fontsource/bilbo";
+import "@fontsource/fondamento";
 import "../styles/Font Awesome/css/all.css";
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
