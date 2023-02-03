@@ -18,6 +18,8 @@ const Menulist = ({ foodList }: any) => {
 	const drinkFilter = useAppSelector((state) => state.list.drinkFilter);
 	const dispatch: any = useAppDispatch();
 
+	console.log(foodList);
+
 	// toggle the visibilty of the bottom filter options navbar on the food menu list
 	const showHideFoodFilter = () => {
 		if (foodFilter == "hidden") {
@@ -89,19 +91,63 @@ const Menulist = ({ foodList }: any) => {
 												</div>
 												<div className="list-dish-price">${item.price}</div>
 											</div>
+											{/* render the options element if there are options in the dish data */}
+											{typeof item.options != "string" ? (
+												<div
+													className="food-options-root"
+													id={`${item.name}-options`}>
+													<h5>Serve With</h5>
+													{item.options.map((opt: string, i: number) => (
+														<label
+															key={`${i}`}
+															className="food-option-host">
+															<input
+																type="checkbox"
+																name={`${opt}`}
+																className="food-option"
+															/>
+															{opt}
+														</label>
+													))}
+												</div>
+											) : (
+												<></>
+											)}
 											<textarea
 												id="cream-cheese-dip-pref"
 												cols={30}
 												rows={2}
 												className="pref-inp"
 												placeholder="Tell us how you want it..."></textarea>
-											<button
-												className="btn-add-food"
-												onClick={(e) => {
-													console.log(item.name);
-												}}>
-												Add To My Tab
-											</button>
+											<div className="food-btns-host">
+												{/* render the serve with button if there options in the dish data */}
+												{typeof item.options != "string" ? (
+													<button
+														className="btn-serve-with"
+														onClick={(e) => {
+															document
+																.querySelectorAll(".food-options-root")
+																.forEach((elm) => {
+																	elm.classList.remove("show");
+																});
+
+															document
+																.getElementById(`${item.name}-options`)
+																?.classList.toggle("show");
+														}}>
+														View Options
+													</button>
+												) : (
+													<></>
+												)}
+												<button
+													className="btn-add-food"
+													onClick={(e) => {
+														console.log(item.name);
+													}}>
+													Add To My Tab
+												</button>
+											</div>
 										</div>
 									</div>
 								))}

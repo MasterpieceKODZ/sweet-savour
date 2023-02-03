@@ -14,6 +14,10 @@ In this project I have used...
 - Fontsource (vercel)
 - Animate CSS
 
-On a window or screen less than 501px the home page is a autoplay carousel showing some new dishes promotion and on larger screens _above 500px_ homepage is a grid layout dashboard also with promotion content
+On a window or screen less than 501px, the home page is a autoplay carousel showing some new dishes promotion and on larger screens _above 500px_ homepage is a grid layout dashboard also with promotion content.
 
 Each slide in the carousel and grid panel has a button that directs to the menulist page.
+
+On the menu list page, the food and drinks list data is fetched on the server side using getServerSideProp and passed to the client side component.
+
+on the food list tab, dish items with options in their menu would be rendered with an options checkbox list element and show options button. only one dish item options can be shown at a time.

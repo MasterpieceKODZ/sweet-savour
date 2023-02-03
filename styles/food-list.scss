@@ -55,6 +55,43 @@
     color: $secondary;
 }
 
+.food-options-root {
+    display: none;
+    margin-top: 7px;
+
+    h5 {
+        font-family: $lobster;
+        color: rgb(88, 88, 88);
+        margin-left: 25px;
+
+    }
+}
+
+.food-options-root.show {
+    display: block;
+}
+
+.food-option-host {
+    display: block;
+    font-family: $lobster;
+    color: rgb(88, 88, 88);
+    margin-top: 3px;
+    margin-bottom: 8px;
+    cursor: pointer;
+
+    input {
+        margin-right: 10px;
+    }
+
+    input:checked {
+        color: gray;
+    }
+
+    input::-ms-check {
+        color: gray;
+    }
+}
+
 .pref-inp {
     outline: solid 1.5px $primary;
     border: solid 1.5px $primary;
@@ -66,9 +103,28 @@
     resize: none;
 }
 
+.food-btns-host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+
+    button {
+        margin-inline: 15px;
+    }
+}
+
+.btn-serve-with {
+    background-color: $primary;
+    color: rgb(190, 0, 0);
+    font-family: $lobster;
+    border-radius: 20px;
+    border: unset;
+    padding: 3px 10px;
+    cursor: pointer;
+}
+
 .btn-add-food {
-    display: block;
-    margin-inline: auto;
     background-color: $secondary;
     color: wheat;
     font-family: $lobster;
