@@ -14,6 +14,14 @@ export function myReducer(state: any = initialState, { type, payload }: any) {
 			return { ...state, drinkFilter: "showing" };
 		case "HIDE_DRINK_FILTER":
 			return { ...state, drinkFilter: "hidden" };
+		case "UPDATE_FOOD_LIST":
+			return { ...initialState, dishes: payload };
+		case "UPDATE_FOOD_TYPE_FILTER":
+			return { ...initialState, foodTypeFilter: payload };
+		case "UPDATE_FOOD_PRICE_FILTER":
+			return { ...initialState, foodPriceFilter: payload };
+		case "UPDATE_FOOD_ALLERGY_FILTER":
+			return { ...initialState, foodAllergies: payload };
 		default:
 			return state;
 	}

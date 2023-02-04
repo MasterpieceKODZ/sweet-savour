@@ -195,6 +195,7 @@
     top: 5px;
     right: 5px;
     cursor: pointer;
+    font-size: 22px;
 }
 
 .food-type {
@@ -219,8 +220,8 @@
 .food-price-inp {
     width: 90px;
     border-radius: 4px;
-    border: solid 2px $primary;
-    outline-color: $primary;
+    border: solid 1px $primary;
+    outline: solid 1px $primary;
 }
 
 .food-price-inp:first-of-type {

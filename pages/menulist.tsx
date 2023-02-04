@@ -10,22 +10,31 @@ import {
 } from "../redux/action-creators";
 import Image from "next/image";
 import { getApp, getApps } from "firebase-admin/app";
+import fetchFoodTypes from "../myFunctions/menulist-functions/fetchFoodCategories";
+import fetchDrinkTypes from "../myFunctions/menulist-functions/fetchDrinkCategories";
+import { actionUpdateFoodlist } from "../redux/action-creators";
+
+import {
+	closeFilterConsole,
+	showFilterOption,
+} from "../myFunctions/menulist-functions/filterConsoleShowHide";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	// retrieve show list state from redux store to determine which list to show (food/drinks)
 	const showList = useAppSelector((state) => state.list.showList);
 	const foodFilter = useAppSelector((state) => state.list.foodFilter);
 	const drinkFilter = useAppSelector((state) => state.list.drinkFilter);
+	const stateDishes = useAppSelector((state) => state.list.dishes);
 	const dispatch: any = useAppDispatch();
 
-	// retrieve all the food categories without repetition
-	const foodCategories: [] = [];
+	const dishList = stateDishes.length ? stateDishes : foodList;
+	console.log("stateDishes", stateDishes, "dishList", dishList);
 
-	foodList.forEach((dish: any) => {
-		if (foodCategories.indexOf(dish.category as never) < 0) {
-			foodCategories.push(dish.category as never);
-		}
-	});
+	// retrieve all the food categories without repetition
+	const foodCategories = fetchFoodTypes(foodList);
+
+	// retrieve all the drinks categories without repetition
+	const drinkCategories = fetchDrinkTypes(drinkList);
 
 	// toggle the visibilty of the filter options bottom navbar on the food menu list
 	const showHideFoodFilter = () => {
@@ -43,20 +52,6 @@ const Menulist = ({ foodList, drinkList }: any) => {
 		} else {
 			dispatch(actionHideDrinkFilter());
 		}
-	};
-
-	//open the active filter option console and closes the rest
-	const showFilterOption = (activeConsole: string) => {
-		document.querySelectorAll(".food-filter-console").forEach((elm) => {
-			elm.classList.remove("show");
-		});
-
-		document.querySelector(`.${activeConsole}`)?.classList.add("show");
-	};
-
-	// close the active filter option console
-	const closeFilterConsole = (activeConsole: string) => {
-		document.querySelector(`.${activeConsole}`)?.classList.remove("show");
 	};
 
 	return (
@@ -92,7 +87,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					{showList == "food" ? (
 						<div className="list food-list">
 							<div className="list-wrapper">
-								{foodList.map((item: any) => (
+								{dishList.map((item: any) => (
 									<div
 										className="dish-host"
 										key={item.id}>
@@ -180,7 +175,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 									foodFilter == "showing" ? "show" : "hide"
 								}`}>
 								<div className="food-filter-console-host">
-									<div className="food-filter-console food-type-console show">
+									<div className="food-filter-console food-type-console">
 										{foodCategories.map((cate: any, i: number) => (
 											<label
 												key={i}
@@ -193,26 +188,28 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											</label>
 										))}
 										<i
-											className="fa-solid fa-circle-xmark food-type-close"
+											className="fa-regular fa-square-check food-type-close"
 											onClick={(e) =>
 												closeFilterConsole("food-type-console")
 											}></i>
 									</div>
 									<div className="food-filter-console food-price-console">
-										<label className="food-price food-price-min">
-											Min
-											<input
-												type="number"
-												className="food-price-inp"
-											/>
-										</label>
-										<label className="food-price food-price-max">
-											<input
-												type="number"
-												className="food-price-inp"
-											/>
-											Max
-										</label>
+										<div className="price-filter-min-max">
+											<label className="food-price food-price-min">
+												Min
+												<input
+													type="number"
+													className="food-price-inp"
+												/>
+											</label>
+											<label className="food-price food-price-max">
+												<input
+													type="number"
+													className="food-price-inp"
+												/>
+												Max
+											</label>
+										</div>
 										<button
 											className="btn-done-food-filter btn-food-price-done"
 											onClick={() => closeFilterConsole("food-price-console")}>
@@ -221,7 +218,8 @@ const Menulist = ({ foodList, drinkList }: any) => {
 									</div>
 									<div className="food-filter-console food-allergy-console">
 										<h4>
-											Got an allergy? write it/them below separated with a comma
+											Got an allergy? write it or them below separated with a
+											comma
 										</h4>
 										<textarea
 											className="food-allergy-inp"
@@ -239,17 +237,32 @@ const Menulist = ({ foodList, drinkList }: any) => {
 								<div className="food-filter-options">
 									<div
 										className="food-filter food-filter-type"
-										onClick={() => showFilterOption("food-type-console")}>
+										onClick={() =>
+											showFilterOption(
+												"food-type-console",
+												"food-filter-console",
+											)
+										}>
 										Type
 									</div>
 									<div
 										className="food-filter food-filter-price"
-										onClick={() => showFilterOption("food-price-console")}>
+										onClick={() =>
+											showFilterOption(
+												"food-price-console",
+												"food-filter-console",
+											)
+										}>
 										Price
 									</div>
 									<div
 										className="food-filter food-filter-allergy"
-										onClick={() => showFilterOption("food-allergy-console")}>
+										onClick={() =>
+											showFilterOption(
+												"food-allergy-console",
+												"food-filter-console",
+											)
+										}>
 										Exclude Dishes With..
 									</div>
 								</div>
@@ -286,8 +299,72 @@ const Menulist = ({ foodList, drinkList }: any) => {
 								className={`drink-filter-host ${
 									drinkFilter == "showing" ? "show" : "hide"
 								}`}>
-								<div className="drink-filter drink-filter-type">Type</div>
-								<div className="drink-filter drink-filter-price">Price</div>
+								<div className="drink-filter-console-host">
+									<div className="drink-filter-console drink-type-console">
+										{drinkCategories.map((cate: any, i: number) => (
+											<label
+												key={i}
+												className="drink-type">
+												<input
+													type="checkbox"
+													className="drink-type-check"
+												/>
+												{cate}
+											</label>
+										))}
+										<i
+											className="fa-regular fa-square-check drink-type-close"
+											onClick={(e) => {
+												closeFilterConsole("drink-type-console");
+											}}></i>
+									</div>
+									<div className="drink-filter-console drink-price-console">
+										<div className="price-filter-min-max">
+											<label className="drink-price-f drink-price-min">
+												Min
+												<input
+													type="number"
+													className="drink-price-inp"
+												/>
+											</label>
+											<label className="drink-price-f drink-price-max">
+												<input
+													type="number"
+													className="drink-price-inp"
+												/>
+												Max
+											</label>
+										</div>
+
+										<button
+											className="btn-done-drink-filter btn-drink-price-done"
+											onClick={() => closeFilterConsole("drink-price-console")}>
+											Done
+										</button>
+									</div>
+								</div>
+								<div className="drink-filter-options">
+									<div
+										className="drink-filter drink-filter-type"
+										onClick={() => {
+											showFilterOption(
+												"drink-type-console",
+												"drink-filter-console",
+											);
+										}}>
+										Type
+									</div>
+									<div
+										className="drink-filter drink-filter-price"
+										onClick={() => {
+											showFilterOption(
+												"drink-price-console",
+												"drink-filter-console",
+											);
+										}}>
+										Price
+									</div>
+								</div>
 							</div>
 						</div>
 					) : (
