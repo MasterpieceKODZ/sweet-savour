@@ -36,9 +36,9 @@ const Menulist = ({ foodList, drinkList }: any) => {
 		(state) => state.appState.filteredFoodList,
 	);
 
-	const [foodPriceMin,setFoodPriceMin] = useState('');
-	const [foodPriceMax,setFoodPriceMax] = useState('');
-	const [foodAllergy,setFoodAllergy] = useState('');
+	const [foodPriceMin, setFoodPriceMin] = useState("");
+	const [foodPriceMax, setFoodPriceMax] = useState("");
+	const [foodAllergy, setFoodAllergy] = useState("");
 
 	const dispatch: any = useAppDispatch();
 
@@ -214,28 +214,34 @@ const Menulist = ({ foodList, drinkList }: any) => {
 									</div>
 									<div className="food-filter-console food-price-console">
 										<div className="price-filter-min-max">
-											<label className="food-price food-price-min">
+											<label
+												className="food-price food-price-min"
+												htmlFor="#food-price-min-inp">
 												Min
-												<input
-													type="number"
-													className="food-price-inp"
-													id="food-price-min-inp"
-													value={foodPriceMin}
-													onChange={(e) =>
-														setFoodPriceMin(e.target.value)
-													}
-												/>
+												<div className="food-price-inp-host">
+													<p>$</p>
+													<input
+														type="number"
+														className="food-price-inp"
+														id="food-price-min-inp"
+														value={foodPriceMin}
+														onChange={(e) => setFoodPriceMin(e.target.value)}
+													/>
+												</div>
 											</label>
-											<label className="food-price food-price-max">
-												<input
-													type="number"
-													className="food-price-inp"
-													id="food-price-max-inp"
-													value={foodPriceMax}
-													onChange={(e) =>
-														setFoodPriceMax(e.target.value)
-													}
-												/>
+											<label
+												className="food-price food-price-max"
+												htmlFor="#food-price-max-inp">
+												<div className="food-price-inp-host">
+													<p>$</p>
+													<input
+														type="number"
+														className="food-price-inp"
+														id="food-price-max-inp"
+														value={foodPriceMax}
+														onChange={(e) => setFoodPriceMax(e.target.value)}
+													/>
+												</div>
 												Max
 											</label>
 										</div>
@@ -260,9 +266,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											cols={30}
 											rows={2}
 											value={foodAllergy}
-											onChange={(e) =>
-												setFoodAllergy(e.target.value)
-											}
+											onChange={(e) => setFoodAllergy(e.target.value)}
 											placeholder="sugar,mapel syrup,strawberry,sunflower oil"></textarea>
 										<button
 											className="btn-done-food-filter btn-food-price-done"

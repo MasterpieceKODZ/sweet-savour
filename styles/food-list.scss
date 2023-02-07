@@ -217,20 +217,42 @@
     font-family: $lobster;
 }
 
-.food-price-inp {
-    width: 90px;
+.food-price-inp-host {
+    width: max-content;
+    display: inline;
+    height: max-content;
     border-radius: 4px;
     border: solid 1px $primary;
     outline: solid 1px $primary;
+    background-color: white;
+    padding: 1px 2px;
+
+    p {
+        display: inline;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 14px;
+        color: rgb(39, 39, 39);
+    }
 }
 
-.food-price-inp:first-of-type {
+.food-price-inp {
+    width: 70px;
+    margin-left: 5px;
+    outline: unset;
+    border: unset;
+
+}
+
+.food-price-inp-host:first-of-type {
     margin-left: 5px;
 }
 
-.food-price-inp:last-of-type {
+.food-price-inp-host:last-of-type {
     margin-right: 5px;
 }
+
+
 
 .btn-done-food-filter {
     display: block;
