@@ -6,9 +6,9 @@ import {
 	SHOW_DRINK_FILTER,
 	HIDE_DRINK_FILTER,
 	UPDATE_FOOD_LIST,
-	UPDATE_FOOD_TYPE_FILTER,
-	UPDATE_FOOD_PRICE_FILTER,
-	UPDATE_FOOD_ALLERGY_FILTER,
+	UPDATE_FOOD_MIN_PRICE,
+	UPDATE_FOOD_MAX_PRICE,
+	UPDATE_FOOD_ALLERGY,
 } from "./action-types";
 
 export function actionShowFood() {
@@ -37,16 +37,4 @@ export function actionHideDrinkFilter() {
 
 export function actionUpdateFoodlist(payload: any) {
 	return { type: UPDATE_FOOD_LIST, payload };
-}
-
-export function actionUpdateFoodTypeFilter(payload: any) {
-	return { type: UPDATE_FOOD_TYPE_FILTER, payload };
-}
-
-export function actionUpdateFoodPriceFilter(payload: any) {
-	return { type: UPDATE_FOOD_PRICE_FILTER, payload };
-}
-
-export function actionUpdateFoodAllergyFilter(payload: any) {
-	return { type: UPDATE_FOOD_ALLERGY_FILTER, payload };
 }

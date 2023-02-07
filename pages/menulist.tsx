@@ -7,28 +7,45 @@ import {
 	actionShowFoodFilter,
 	actionShowDrinkFilter,
 	actionHideDrinkFilter,
+	actionUpdateFoodMaxPrice,
+	actionUpdateFoodAllergy,
 } from "../redux/action-creators";
 import Image from "next/image";
 import { getApp, getApps } from "firebase-admin/app";
 import fetchFoodTypes from "../myFunctions/menulist-functions/fetchFoodCategories";
 import fetchDrinkTypes from "../myFunctions/menulist-functions/fetchDrinkCategories";
-import { actionUpdateFoodlist } from "../redux/action-creators";
+import { updateFilteredFoodList } from "../myFunctions/menulist-functions/foodlistFilter";
+import { actionUpdateFoodMinPrice } from "../redux/action-creators";
 
 import {
 	closeFilterConsole,
 	showFilterOption,
 } from "../myFunctions/menulist-functions/filterConsoleShowHide";
+import { useState } from "react";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	// retrieve show list state from redux store to determine which list to show (food/drinks)
-	const showList = useAppSelector((state) => state.list.showList);
-	const foodFilter = useAppSelector((state) => state.list.foodFilter);
-	const drinkFilter = useAppSelector((state) => state.list.drinkFilter);
-	const stateDishes = useAppSelector((state) => state.list.dishes);
+	const showList = useAppSelector((state) => state.appState.showList);
+
+	// if foodFilter state is hidden the food list filter options bottom navbar is dismissed and when it is shown bottom navbar is visible
+	const foodFilter = useAppSelector((state) => state.appState.foodFilter);
+	// if drinkFilter state is hidden the drink list filter options bottom navbar is dismissed and when it is shown bottom navbar is visible
+	const drinkFilter = useAppSelector((state) => state.appState.drinkFilter);
+	//get the current state of the filtered foodlist
+	const filteredFoodlistArray = useAppSelector(
+		(state) => state.appState.filteredFoodList,
+	);
+
+	const [foodPriceMin,setFoodPriceMin] = useState('');
+	const [foodPriceMax,setFoodPriceMax] = useState('');
+	const [foodAllergy,setFoodAllergy] = useState('');
+
 	const dispatch: any = useAppDispatch();
 
-	const dishList = stateDishes.length ? stateDishes : foodList;
-	console.log("stateDishes", stateDishes, "dishList", dishList);
+	// if filtered food list is not empty it is used to populate the food list UI else the foodList prop is used
+	const dishList = filteredFoodlistArray.length
+		? filteredFoodlistArray
+		: foodList;
 
 	// retrieve all the food categories without repetition
 	const foodCategories = fetchFoodTypes(foodList);
@@ -183,15 +200,17 @@ const Menulist = ({ foodList, drinkList }: any) => {
 												<input
 													type="checkbox"
 													className="food-type-check"
+													name={cate}
 												/>
 												{cate}
 											</label>
 										))}
 										<i
 											className="fa-regular fa-square-check food-type-close"
-											onClick={(e) =>
-												closeFilterConsole("food-type-console")
-											}></i>
+											onClick={(e) => {
+												closeFilterConsole("food-type-console");
+												updateFilteredFoodList(foodList, dispatch);
+											}}></i>
 									</div>
 									<div className="food-filter-console food-price-console">
 										<div className="price-filter-min-max">
@@ -200,36 +219,57 @@ const Menulist = ({ foodList, drinkList }: any) => {
 												<input
 													type="number"
 													className="food-price-inp"
+													id="food-price-min-inp"
+													value={foodPriceMin}
+													onChange={(e) =>
+														setFoodPriceMin(e.target.value)
+													}
 												/>
 											</label>
 											<label className="food-price food-price-max">
 												<input
 													type="number"
 													className="food-price-inp"
+													id="food-price-max-inp"
+													value={foodPriceMax}
+													onChange={(e) =>
+														setFoodPriceMax(e.target.value)
+													}
 												/>
 												Max
 											</label>
 										</div>
 										<button
 											className="btn-done-food-filter btn-food-price-done"
-											onClick={() => closeFilterConsole("food-price-console")}>
+											onClick={() => {
+												closeFilterConsole("food-price-console");
+												updateFilteredFoodList(foodList, dispatch);
+											}}>
 											Done
 										</button>
 									</div>
 									<div className="food-filter-console food-allergy-console">
 										<h4>
-											Got an allergy? write it or them below separated with a
-											comma
+											Don`t want an ingredient in your food? write it or them
+											below in singular terms separated with a comma to filter
+											out food with that/those ingredient
 										</h4>
 										<textarea
 											className="food-allergy-inp"
+											id="allergy-input"
 											cols={30}
-											rows={2}></textarea>
+											rows={2}
+											value={foodAllergy}
+											onChange={(e) =>
+												setFoodAllergy(e.target.value)
+											}
+											placeholder="sugar,mapel syrup,strawberry,sunflower oil"></textarea>
 										<button
 											className="btn-done-food-filter btn-food-price-done"
-											onClick={() =>
-												closeFilterConsole("food-allergy-console")
-											}>
+											onClick={() => {
+												closeFilterConsole("food-allergy-console");
+												updateFilteredFoodList(foodList, dispatch);
+											}}>
 											Done
 										</button>
 									</div>
@@ -308,6 +348,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 												<input
 													type="checkbox"
 													className="drink-type-check"
+													name={cate}
 												/>
 												{cate}
 											</label>

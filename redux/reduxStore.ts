@@ -3,7 +3,7 @@ import { myReducer } from "./reducer";
 
 const reduxStore = configureStore({
 	reducer: {
-		list: myReducer,
+		appState: myReducer,
 	},
 });
 
