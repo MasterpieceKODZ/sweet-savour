@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { myReducer } from "./reducer";
+import toastStateReducer from "./toastReducer";
 
 const reduxStore = configureStore({
 	reducer: {
 		appState: myReducer,
+		toastState: toastStateReducer,
 	},
 });
 

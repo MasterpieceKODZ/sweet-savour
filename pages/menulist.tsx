@@ -2,30 +2,30 @@ import Navbar from "../components/Navbar";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import {
 	actionHideFoodFilter,
-	actionShowDrink,
-	actionShowFood,
+	// actionShowDrink,
+	// actionShowFood,
 	actionShowFoodFilter,
 	actionShowDrinkFilter,
 	actionHideDrinkFilter,
-	actionUpdateFoodMaxPrice,
-	actionUpdateFoodAllergy,
 } from "../redux/action-creators";
 import Image from "next/image";
 import { getApp, getApps } from "firebase-admin/app";
 import fetchFoodTypes from "../myFunctions/menulist-functions/fetchFoodCategories";
 import fetchDrinkTypes from "../myFunctions/menulist-functions/fetchDrinkCategories";
 import { updateFilteredFoodList } from "../myFunctions/menulist-functions/foodlistFilter";
-import { actionUpdateFoodMinPrice } from "../redux/action-creators";
 
 import {
 	closeFilterConsole,
 	showFilterOption,
 } from "../myFunctions/menulist-functions/filterConsoleShowHide";
 import { useState } from "react";
+import { updateFilteredDrinksList } from "../myFunctions/menulist-functions/drinksListFilter";
 
 const Menulist = ({ foodList, drinkList }: any) => {
+	const dispatch: any = useAppDispatch();
+
 	// retrieve show list state from redux store to determine which list to show (food/drinks)
-	const showList = useAppSelector((state) => state.appState.showList);
+	const [showList, setShowList] = useState("food");
 
 	// if foodFilter state is hidden the food list filter options bottom navbar is dismissed and when it is shown bottom navbar is visible
 	const foodFilter = useAppSelector((state) => state.appState.foodFilter);
@@ -36,16 +36,26 @@ const Menulist = ({ foodList, drinkList }: any) => {
 		(state) => state.appState.filteredFoodList,
 	);
 
+	// get the current state of the filterd drinks list
+	const filteredDrinksListArray = useAppSelector(
+		(state) => state.appState.filteredDrinksList,
+	);
+
 	const [foodPriceMin, setFoodPriceMin] = useState("");
 	const [foodPriceMax, setFoodPriceMax] = useState("");
 	const [foodAllergy, setFoodAllergy] = useState("");
-
-	const dispatch: any = useAppDispatch();
+	const [drinkPriceMin, setDrinkPriceMin] = useState("");
+	const [drinkPriceMax, setDrinkPriceMax] = useState("");
 
 	// if filtered food list is not empty it is used to populate the food list UI else the foodList prop is used
 	const dishList = filteredFoodlistArray.length
 		? filteredFoodlistArray
 		: foodList;
+
+	// if filtered food list is not empty it is used to populate the food list UI else the foodList prop is used
+	const newDrinksList = filteredDrinksListArray.length
+		? filteredDrinksListArray
+		: drinkList;
 
 	// retrieve all the food categories without repetition
 	const foodCategories = fetchFoodTypes(foodList);
@@ -79,7 +89,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 				<div className="menu-tab-layout">
 					<div
 						className={`tab food-tab ${showList == "food" ? "active" : ""}`}
-						onClick={() => dispatch(actionShowFood())}>
+						onClick={() => setShowList("food")}>
 						<h4>Food</h4>
 						<div
 							className="food-filter-btn"
@@ -90,7 +100,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					</div>
 					<div
 						className={`tab drink-tab ${showList == "drink" ? "active" : ""}`}
-						onClick={() => dispatch(actionShowDrink())}>
+						onClick={() => setShowList("drink")}>
 						<h4>Drink</h4>
 						<div
 							className="drink-filter-btn"
@@ -210,6 +220,8 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											onClick={(e) => {
 												closeFilterConsole("food-type-console");
 												updateFilteredFoodList(foodList, dispatch);
+												setDrinkPriceMax("");
+												setDrinkPriceMax("");
 											}}></i>
 									</div>
 									<div className="food-filter-console food-price-console">
@@ -250,6 +262,8 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											onClick={() => {
 												closeFilterConsole("food-price-console");
 												updateFilteredFoodList(foodList, dispatch);
+												setDrinkPriceMax("");
+												setDrinkPriceMax("");
 											}}>
 											Done
 										</button>
@@ -273,6 +287,8 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											onClick={() => {
 												closeFilterConsole("food-allergy-console");
 												updateFilteredFoodList(foodList, dispatch);
+												setDrinkPriceMax("");
+												setDrinkPriceMax("");
 											}}>
 											Done
 										</button>
@@ -318,7 +334,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					{showList == "drink" ? (
 						<div className="list drink-list">
 							<div className="list-wrapper">
-								{drinkList.map((item: any) => (
+								{newDrinksList.map((item: any) => (
 									<div
 										className="drink-host"
 										key={`${item.id}`}>
@@ -361,29 +377,51 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											className="fa-regular fa-square-check drink-type-close"
 											onClick={(e) => {
 												closeFilterConsole("drink-type-console");
+												updateFilteredDrinksList(drinkList, dispatch);
+												setFoodPriceMax("");
+												setFoodPriceMin("");
+												setFoodAllergy("");
 											}}></i>
 									</div>
 									<div className="drink-filter-console drink-price-console">
 										<div className="price-filter-min-max">
 											<label className="drink-price-f drink-price-min">
 												Min
-												<input
-													type="number"
-													className="drink-price-inp"
-												/>
+												<div className="drink-price-inp-host">
+													<p>$</p>
+													<input
+														type="number"
+														className="drink-price-inp"
+														id="drinks-price-min-inp"
+														value={drinkPriceMin}
+														onChange={(e) => setDrinkPriceMin(e.target.value)}
+													/>
+												</div>
 											</label>
 											<label className="drink-price-f drink-price-max">
-												<input
-													type="number"
-													className="drink-price-inp"
-												/>
+												<div className="drink-price-inp-host">
+													<p>$</p>
+													<input
+														type="number"
+														className="drink-price-inp"
+														id="drinks-price-max-inp"
+														value={drinkPriceMax}
+														onChange={(e) => setDrinkPriceMax(e.target.value)}
+													/>
+												</div>
 												Max
 											</label>
 										</div>
 
 										<button
 											className="btn-done-drink-filter btn-drink-price-done"
-											onClick={() => closeFilterConsole("drink-price-console")}>
+											onClick={() => {
+												closeFilterConsole("drink-price-console");
+												updateFilteredDrinksList(drinkList, dispatch);
+												setFoodPriceMax("");
+												setFoodPriceMin("");
+												setFoodAllergy("");
+											}}>
 											Done
 										</button>
 									</div>

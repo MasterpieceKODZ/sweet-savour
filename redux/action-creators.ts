@@ -1,23 +1,13 @@
 import {
-	SHOW_DRINK_LIST,
 	SHOW_FOOD_FILTER,
 	HIDE_FOOD_FILTER,
-	SHOW_FOOD_LIST,
 	SHOW_DRINK_FILTER,
 	HIDE_DRINK_FILTER,
 	UPDATE_FOOD_LIST,
-	UPDATE_FOOD_MIN_PRICE,
-	UPDATE_FOOD_MAX_PRICE,
-	UPDATE_FOOD_ALLERGY,
+	UPDATE_DRINKS_LIST,
+	SHOW_TOAST,
+	HIDE_TOAST,
 } from "./action-types";
-
-export function actionShowFood() {
-	return { type: SHOW_FOOD_LIST };
-}
-
-export function actionShowDrink() {
-	return { type: SHOW_DRINK_LIST };
-}
 
 export function actionHideFoodFilter() {
 	return { type: HIDE_FOOD_FILTER };
@@ -37,4 +27,16 @@ export function actionHideDrinkFilter() {
 
 export function actionUpdateFoodlist(payload: any) {
 	return { type: UPDATE_FOOD_LIST, payload };
+}
+
+export function actionUpdateDrinksList(payload: any) {
+	return { type: UPDATE_DRINKS_LIST, payload };
+}
+
+export function actionShowToast() {
+	return { type: SHOW_TOAST };
+}
+
+export function actionHideToast() {
+	return { type: HIDE_TOAST };
 }

@@ -19,7 +19,5 @@ export function updateFilteredFoodList(foodList: object[], dispatch: any) {
 		newFoodList.length ? newFoodList : foodList,
 	);
 
-	console.log(newFoodList);
-
 	dispatch(actionUpdateFoodlist(newFoodList.length ? newFoodList : foodList));
 }
