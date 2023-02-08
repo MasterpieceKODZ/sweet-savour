@@ -57,7 +57,7 @@ export default function filterFoodByPrice(
 		);
 	} else if (newFilteredFoodList.length < 1) {
 		priceShowedToast = true;
-		showToast(`sorry, we dont have any dish in desired price range`);
+		showToast(`sorry, we dont have any dish in your desired price range`);
 	}
 
 	if (newFilteredFoodList.length)

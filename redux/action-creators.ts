@@ -32,11 +32,3 @@ export function actionUpdateFoodlist(payload: any) {
 export function actionUpdateDrinksList(payload: any) {
 	return { type: UPDATE_DRINKS_LIST, payload };
 }
-
-export function actionShowToast() {
-	return { type: SHOW_TOAST };
-}
-
-export function actionHideToast() {
-	return { type: HIDE_TOAST };
-}
