@@ -4,19 +4,31 @@ import filterFoodByPrice from "./foodFilterByPrice";
 import filterFoodByType from "./foodFilterByType";
 
 export function updateFilteredFoodList(foodList: object[], dispatch: any) {
-	let newFoodList: object[] = [];
+	let newFoodList: any = [];
 
 	//***************** filter by type **********************/
 	newFoodList = filterFoodByType(foodList);
 
 	//**************************** filter by price *******************************//
 
-	newFoodList = filterFoodByPrice(newFoodList.length ? newFoodList : foodList);
+	const foodPriceMin: string =
+		document.getElementById("food-price-min-inp")?.value;
+	const foodPriceMax: string =
+		document.getElementById("food-price-max-inp")?.value;
+
+	newFoodList = filterFoodByPrice(
+		newFoodList.length ? newFoodList : foodList,
+		foodPriceMin,
+		foodPriceMax,
+	);
 
 	//**************** filter out food with specified food allergies **********************//
 
 	newFoodList = filterFoodByAllergy(
-		newFoodList.length ? newFoodList : foodList,
+		newFoodList.newFilteredFoodList.length
+			? newFoodList.newFilteredFoodList
+			: foodList,
+		newFoodList.priceShowedToast,
 	);
 
 	dispatch(actionUpdateFoodlist(newFoodList.length ? newFoodList : foodList));

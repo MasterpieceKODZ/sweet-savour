@@ -1,4 +1,9 @@
-export default function filterFoodByAllergy(foodList: object[]) {
+import showToast from "./showToastFunction";
+
+export default function filterFoodByAllergy(
+	foodList: object[],
+	priceShowedToast: boolean,
+) {
 	let newFoodList: object[] = [];
 
 	const foodAllergyInp: any = document.getElementById("allergy-input");
@@ -43,6 +48,18 @@ export default function filterFoodByAllergy(foodList: object[]) {
 		});
 
 		newFoodList = allergyFilteredFoodList;
+	}
+
+	if (priceShowedToast && allergyValues) {
+		setTimeout(() => {
+			showToast(
+				`all dishes with ${allergyValues} have been removed from menu list`,
+			);
+		}, 7000);
+	} else if (!priceShowedToast && allergyValues) {
+		showToast(
+			`all dishes with ${allergyValues} have been removed from menu list`,
+		);
 	}
 
 	if (newFoodList.length) return newFoodList;

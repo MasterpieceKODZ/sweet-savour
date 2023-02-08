@@ -455,6 +455,9 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					)}
 				</div>
 			</div>
+			<div className="toast-msg-host">
+				<p id="toast-msg">This Is A Toast Message</p>
+			</div>
 		</div>
 	);
 };
