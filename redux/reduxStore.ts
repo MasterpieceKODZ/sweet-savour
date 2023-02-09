@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { myReducer } from "./reducer";
+import orderListReducer from "./orderlistReducer";
 
 const reduxStore = configureStore({
 	reducer: {
 		appState: myReducer,
+		order: orderListReducer,
 	},
 });
 

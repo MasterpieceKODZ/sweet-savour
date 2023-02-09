@@ -20,6 +20,14 @@ import {
 } from "../myFunctions/menulist-functions/filterConsoleShowHide";
 import { useState } from "react";
 import { updateFilteredDrinksList } from "../myFunctions/menulist-functions/drinksListFilter";
+import {
+	closeIngredientsModal,
+	showIngredientsModal,
+} from "../myFunctions/menulist-functions/showHideIngredientsModal";
+import {
+	addDishToTab,
+	addDrinkToTab,
+} from "../myFunctions/menulist-functions/addItemTab";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	const dispatch: any = useAppDispatch();
@@ -46,6 +54,10 @@ const Menulist = ({ foodList, drinkList }: any) => {
 	const [foodAllergy, setFoodAllergy] = useState("");
 	const [drinkPriceMin, setDrinkPriceMin] = useState("");
 	const [drinkPriceMax, setDrinkPriceMax] = useState("");
+
+	const foodOrderList = useAppSelector((state) => state.order.foodlist);
+	const drinksOrderList = useAppSelector((state) => state.order.drinkslist);
+	const orderListLength = foodOrderList.length + drinksOrderList.length;
 
 	// if filtered food list is not empty it is used to populate the food list UI else the foodList prop is used
 	const dishList = filteredFoodlistArray.length
@@ -117,7 +129,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 								{dishList.map((item: any) => (
 									<div
 										className="dish-host"
-										key={item.id}>
+										key={item.id.trim()}>
 										<Image
 											width={280}
 											height={140}
@@ -149,7 +161,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 															<input
 																type="checkbox"
 																name={`${opt}`}
-																className="food-option"
+																className={`food-option ${item.id.trim()}-option-check`}
 															/>
 															{opt}
 														</label>
@@ -159,10 +171,9 @@ const Menulist = ({ foodList, drinkList }: any) => {
 												<></>
 											)}
 											<textarea
-												id="cream-cheese-dip-pref"
 												cols={30}
 												rows={2}
-												className="pref-inp"
+												className={`pref-inp ${item.id.trim()}-pref-inp`}
 												placeholder="Tell us how you want it..."></textarea>
 											<div className="food-btns-host">
 												{/* render the serve with button if there options in the dish data */}
@@ -188,11 +199,16 @@ const Menulist = ({ foodList, drinkList }: any) => {
 												<button
 													className="btn-add-food"
 													onClick={(e) => {
-														console.log(item.name);
+														addDishToTab(item, dispatch);
 													}}>
 													Add To My Tab
 												</button>
 											</div>
+										</div>
+										<div
+											className="btn-ingredients"
+											onClick={() => showIngredientsModal(item.ingredients)}>
+											Ingredients
 										</div>
 									</div>
 								))}
@@ -350,7 +366,11 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											<h4 className="drink-name">{item.name}</h4>
 											<h6 className="drink-category">{item.category}</h6>
 											<div className="drink-price">{item.price}</div>
-											<button className="btn-add-drink">Add To My Tab</button>
+											<button
+												className="btn-add-drink"
+												onClick={() => addDrinkToTab(item, dispatch)}>
+												Add To My Tab
+											</button>
 										</div>
 									</div>
 								))}
@@ -453,6 +473,20 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					) : (
 						<></>
 					)}
+				</div>
+			</div>
+			<div className={`btn-show-orderlist`}>
+				<i className="fa-solid fa-clipboard-list"></i>
+				<div className={`order-list-badge ${orderListLength ? "show" : ""}`}>
+					{orderListLength > 9 ? "9+" : orderListLength}
+				</div>
+			</div>
+			<div className="ingredients-list-modal">
+				<ul className="ingredients-list"></ul>
+				<div
+					className="ingredients-modal-close-btn"
+					onClick={() => closeIngredientsModal()}>
+					close
 				</div>
 			</div>
 			<div className="toast-msg-host">

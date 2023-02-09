@@ -6,6 +6,7 @@
     box-shadow: 0px 0px 2px grey;
     overflow: hidden;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .dish-data-host {
@@ -131,6 +132,19 @@
     border: unset;
     padding: 3px 10px;
     cursor: pointer;
+}
+
+.btn-ingredients {
+    background-color: $primary;
+    color: $secondary;
+    font-size: 15px;
+    padding: 2px 5px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 3px black;
+    position: absolute;
+    font-family: $lobster;
+    top: 5px;
+    right: 5px;
 }
 
 .food-filter-host {

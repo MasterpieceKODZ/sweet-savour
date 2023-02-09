@@ -5,8 +5,8 @@ import {
 	HIDE_DRINK_FILTER,
 	UPDATE_FOOD_LIST,
 	UPDATE_DRINKS_LIST,
-	SHOW_TOAST,
-	HIDE_TOAST,
+	UPDATE_FOOD_ORDER_LIST,
+	UPDATE_DRINKS_ORDER_LIST,
 } from "./action-types";
 
 export function actionHideFoodFilter() {
@@ -31,4 +31,12 @@ export function actionUpdateFoodlist(payload: any) {
 
 export function actionUpdateDrinksList(payload: any) {
 	return { type: UPDATE_DRINKS_LIST, payload };
+}
+
+export function actionUpdateFoodOrderList(payload: any) {
+	return { type: UPDATE_FOOD_ORDER_LIST, payload };
+}
+
+export function actionUpdateDrinksOrderList(payload: any) {
+	return { type: UPDATE_DRINKS_ORDER_LIST, payload };
 }
