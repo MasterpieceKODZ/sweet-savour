@@ -22,13 +22,15 @@ Each slide in the carousel and grid panel has a button that directs to the menul
 
 On the menu list page, the food and drinks list data is fetched on the server side using getServerSideProp and passed to the client side component.
 
+On a window or sreen-width below **_650px_** the the menulist page is a tab layout with two tabs the food tab show the food list and the drink tab. And on a window above **_650px_** the screen is a two column grid layout with the left column showing the foodlist and the right column showing the drinkslist and each list has its filter button at a top corner
+
 on the food list tab, dish items with options in their menu would be rendered with an options checkbox list element and show options button. only one dish item options can be shown at a time.
 
 When the filter icon on the food or drink tab is click the filter options bottom navbar is brought into view and when clicked again it is dismissed.
 
 Each filter options on either list (food or drink) has an associated filter console where the user can specify prefrences and filter out unwanted items from the list.
 
-The floating action button on the button right of the menulist page directs the user to the orderlist page where the user can review and complete their order by making payment P.S there is no realtime payment gateway on this website as it is not a production project
+The floating action button on the bottom right of the menulist page directs the user to the orderlist page where the user can review and complete their order by making payment P.S there is no realtime payment gateway on this website as it is not a production project.
 
 ## Refrence
 
@@ -143,5 +145,15 @@ The _**myFunctions**_ folder in the root folder contains some functions seperate
   This function adds a dish to the order foodlist redux state creating an order object with the name and price of the dish passed in as an arg and adds two optional props to the order obj which are the **_options_** prop for dishes with serving options and the **_pref_** option if the user describes how they like the dish to be made.
 
 - #### **addItemTab.ts/addDrinkToTab**
+
   **_params_** (drink: any,dispatch : any) **_return_** : void
   This function adds a drink to the drinks order list state in the redux store by creating an object with the name and price of the drink which is then added to the drinks order list state
+
+- #### **showHideListTab.ts/showFoodList**
+
+  **_params_** (none) **_return_** : none
+  This function brings the foodlist into view in the tab layout, by removing the show class from all _list_ and putting it in the food list alone
+
+- #### **showHideListTab.ts/showDrinkList**
+  **_params_** (none) **_return_** : none
+  This function brings the drinklist into view in the tab layout, by removing the show class from all _list_ and putting it in the drink list alone

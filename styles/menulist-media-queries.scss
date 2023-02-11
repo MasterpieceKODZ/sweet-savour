@@ -1,0 +1,186 @@
+@media screen and (min-width : 350px) {
+    .dish-img {
+        height: 200px;
+    }
+
+    .list-dish-price {
+        font-size: 15px;
+    }
+
+    .list-dish-name {
+        font-size: 27px;
+    }
+
+    .drink-category {
+        font-size: 15px;
+    }
+
+    .drink-price {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width : 400px) {
+    .dish-img {
+        height: 250px;
+    }
+
+    .list-dish-price {
+        font-size: 17px;
+    }
+
+    .list-dish-name {
+        font-size: 29px;
+    }
+
+    .drink-category {
+        font-size: 17px;
+    }
+
+    .drink-price {
+        font-size: 17px;
+    }
+}
+
+@media screen and (min-width : 450px) {
+
+    .drink-name {
+        font-size: 25px;
+
+    }
+
+    .drink-img {
+        width: 150px;
+    }
+
+    .list-dish-name {
+        text-align: left;
+    }
+
+    .list-dish-category {
+        text-align: left;
+    }
+
+    .food-options-root {
+        text-align: left;
+    }
+
+    .dish-host {
+        width: 100%;
+        max-width: 410px;
+        display: inline-block;
+    }
+
+    .drink-host {
+        width: 100%;
+        max-width: 430px;
+        margin-inline: auto;
+    }
+}
+
+@media screen and (min-width : 650px) {
+    .menu-tab-layout {
+        display: none;
+    }
+
+    .list {
+        display: inline-block;
+    }
+
+    .menu-list-host {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 10px;
+    }
+
+    .dish-host {
+        width: 100%;
+        max-width: 100%;
+        display: inline-block;
+    }
+
+    .drink-host {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .drink-name {
+        font-size: 18px;
+
+    }
+
+    .drink-img {
+        width: 100px;
+    }
+
+    .dish-img {
+        height: 200px;
+    }
+
+    .list-dish-price {
+        font-size: 14px;
+    }
+
+    .list-dish-name {
+        font-size: 25px;
+    }
+
+    .drink-category {
+        font-size: 15px;
+    }
+
+    .drink-price {
+        font-size: 14px;
+    }
+
+    .drink-filter-btn-lg,
+    .food-filter-btn-lg {
+        display: block;
+    }
+}
+
+// @media screen and (max-width : 750px) {
+//     .dish-host {
+//         min-width: 100%;
+//         max-width: 100%;
+//         display: inline-block;
+//     }
+
+//     .drink-host {
+//         min-width: 100%;
+//         max-width: 100%;
+//     }
+// }
+
+@media screen and (min-width: 750px) {
+    .menu-list-host {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+    }
+
+    .drink-img {
+        width: 130px;
+    }
+
+    .dish-img {
+        height: 250px;
+    }
+
+    .dish-host {
+        width: 100%;
+        max-width: 410px;
+        display: inline-block;
+    }
+
+    .drink-host {
+        width: 100%;
+        max-width: 430px;
+        margin-inline: auto;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .menu-list-host {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+    }
+}

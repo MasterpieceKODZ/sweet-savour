@@ -87,7 +87,11 @@
     border-radius: 10px;
     color: rgb(139, 63, 0);
     transition: all .5s linear;
+}
 
+.drink-type-console {
+    text-align: center;
+    max-width: 500px;
 }
 
 .drink-type {
@@ -167,6 +171,10 @@
     max-height: max-content;
     padding: 10px;
     margin-bottom: 5px;
+}
+
+.drink-type-console.show {
+    padding-top: 25px;
 }
 
 .drink-filter-options {

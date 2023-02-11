@@ -5,8 +5,12 @@
     border-radius: 10px;
     box-shadow: 0px 0px 2px grey;
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     position: relative;
+}
+
+.dish-host:first-of-type {
+    margin-top: 15px;
 }
 
 .dish-data-host {
@@ -35,6 +39,10 @@
 .list-dish-price {
     flex-shrink: 0;
     flex-grow: 0;
+    font-family: $bungee;
+    font-size: 12px;
+    color: $secondary;
+
 }
 
 .list-dish-name {
@@ -47,12 +55,6 @@
     font-family: $lobster;
     color: $secondary;
     font-size: 13px;
-}
-
-.list-dish-price {
-    font-family: $bungee;
-    font-size: 12px;
-    color: $secondary;
 }
 
 .food-options-root {
@@ -145,6 +147,7 @@
     font-family: $lobster;
     top: 5px;
     right: 5px;
+    cursor: pointer;
 }
 
 .food-filter-host {

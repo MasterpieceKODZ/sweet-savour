@@ -1,8 +1,6 @@
 export function showIngredientsModal(ingredients: string[]) {
 	let listHTML: string = "";
 
-	console.log(ingredients);
-
 	ingredients.forEach((ing) => {
 		listHTML = `${listHTML}\n<li>${ing}</li>`;
 	});

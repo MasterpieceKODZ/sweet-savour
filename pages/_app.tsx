@@ -26,13 +26,28 @@ import "../styles/menulist.scss";
 import "../styles/food-list.scss";
 import "../styles/drink-list.scss";
 import "../styles/media-queries.scss";
+import "../styles/menulist-media-queries.scss";
 import { Provider } from "react-redux";
 import reduxStore from "../redux/reduxStore";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<Provider store={reduxStore}>
-			<Component {...pageProps} />
+			<>
+				<Head>
+					<title>Sweet Savor</title>
+					<meta
+						name="description"
+						content="food and drinks ordering app for sweet savour restaurant"
+					/>
+					<link
+						rel="icon"
+						href="/favicon.ico"
+					/>
+				</Head>
+				<Component {...pageProps} />
+			</>
 		</Provider>
 	);
 }
