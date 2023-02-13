@@ -11,16 +11,7 @@ export function updateFilteredFoodList(foodList: object[], dispatch: any) {
 
 	//**************************** filter by price *******************************//
 
-	const foodPriceMin: string =
-		document.getElementById("food-price-min-inp")?.value;
-	const foodPriceMax: string =
-		document.getElementById("food-price-max-inp")?.value;
-
-	newFoodList = filterFoodByPrice(
-		newFoodList.length ? newFoodList : foodList,
-		foodPriceMin,
-		foodPriceMax,
-	);
+	newFoodList = filterFoodByPrice(newFoodList.length ? newFoodList : foodList);
 
 	//**************** filter out food with specified food allergies **********************//
 

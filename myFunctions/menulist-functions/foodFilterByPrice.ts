@@ -1,9 +1,11 @@
 import showToast from "./showToastFunction";
-export default function filterFoodByPrice(
-	foodList: object[],
-	min: string,
-	max: string,
-) {
+export default function filterFoodByPrice(foodList: object[]) {
+	const foodPriceMin: any = document.getElementById("food-price-min-inp");
+	const foodPriceMax: any = document.getElementById("food-price-max-inp");
+
+	const min: string = foodPriceMin.value;
+	const max: string = foodPriceMax.value;
+
 	let newFilteredFoodList: object[] = [];
 
 	// get the highest price from foodlist
