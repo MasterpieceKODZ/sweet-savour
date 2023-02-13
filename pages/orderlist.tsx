@@ -20,6 +20,10 @@ const OrderList = () => {
 	const router = useRouter();
 
 	useEffect(() => {
+		if (foodOrderListState.length + drinkOrderListState.length < 1) {
+			router.push("/menulist");
+		}
+
 		const routeChangeStartHandeler = (url: string, { shallow }: any) => {
 			if (url.startsWith("/menulist")) {
 				dispatch(actionClearFilteredLists());
@@ -31,7 +35,7 @@ const OrderList = () => {
 		return () => {
 			router.events.off("routeChangeStart", routeChangeStartHandeler);
 		};
-	}, []);
+	}, [foodOrderListState, drinkOrderListState]);
 
 	return (
 		<div className="orderlist-root">
