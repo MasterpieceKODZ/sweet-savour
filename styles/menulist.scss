@@ -126,6 +126,7 @@
     width: 100%;
     height: 100%;
     position: relative;
+    padding-block: 15px;
 }
 
 .list-wrapper {
@@ -146,7 +147,6 @@
 .food-list {
     background-color: rgb(253, 240, 215);
     border: solid 2px $secondary;
-    padding-top: 15px;
     overflow: hidden;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -157,7 +157,6 @@
 .drink-list {
     background-color: rgb(255, 233, 233);
     border: solid 2px $primary;
-    padding-top: 15px;
     overflow: hidden;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
