@@ -175,10 +175,16 @@
     justify-content: center;
 }
 
-.btn-show-orderlist {
+.btn-show-orderlist-link {
+    text-decoration: none;
+    width: max-content;
+    height: max-content;
     position: absolute;
     bottom: 30px;
     right: 20px;
+}
+
+.btn-show-orderlist {
     width: max-content;
     height: max-content;
     padding: 10px 15px;

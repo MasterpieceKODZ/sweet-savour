@@ -5,8 +5,6 @@ export function showIngredientsModal(ingredients: string[]) {
 		listHTML = `${listHTML}\n<li>${ing}</li>`;
 	});
 
-	console.log(listHTML);
-
 	const ingList: any = document.querySelector(".ingredients-list");
 	ingList.innerHTML = listHTML;
 

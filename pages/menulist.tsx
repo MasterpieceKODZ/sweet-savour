@@ -2,8 +2,6 @@ import Navbar from "../components/Navbar";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import {
 	actionHideFoodFilter,
-	// actionShowDrink,
-	// actionShowFood,
 	actionShowFoodFilter,
 	actionShowDrinkFilter,
 	actionHideDrinkFilter,
@@ -32,6 +30,7 @@ import {
 	showDrinkList,
 	showFoodList,
 } from "../myFunctions/menulist-functions/showHideListTab";
+import Link from "next/link";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	const dispatch: any = useAppDispatch();
@@ -476,12 +475,20 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					</div>
 				</div>
 			</div>
-			<div className={`btn-show-orderlist`}>
-				<i className="fa-solid fa-clipboard-list"></i>
-				<div className={`order-list-badge ${orderListLength ? "show" : ""}`}>
-					{orderListLength > 9 ? "9+" : orderListLength}
+			<Link
+				className={`btn-show-orderlist-link`}
+				href="/orderlist"
+				passHref>
+				<div
+					className={`btn-show-orderlist`}
+					title="show order list">
+					<i className="fa-solid fa-clipboard-list"></i>
+					<div className={`order-list-badge ${orderListLength ? "show" : ""}`}>
+						{orderListLength > 9 ? "9+" : orderListLength}
+					</div>
 				</div>
-			</div>
+			</Link>
+
 			<div className="ingredients-list-modal">
 				<ul className="ingredients-list"></ul>
 				<div

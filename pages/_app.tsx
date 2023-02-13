@@ -25,6 +25,7 @@ import "../styles/dashboard-dish3.scss";
 import "../styles/menulist.scss";
 import "../styles/food-list.scss";
 import "../styles/drink-list.scss";
+import "../styles/orderlist.scss";
 import "../styles/media-queries.scss";
 import "../styles/menulist-media-queries.scss";
 import { Provider } from "react-redux";

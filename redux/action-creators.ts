@@ -5,8 +5,11 @@ import {
 	HIDE_DRINK_FILTER,
 	UPDATE_FOOD_LIST,
 	UPDATE_DRINKS_LIST,
-	UPDATE_FOOD_ORDER_LIST,
-	UPDATE_DRINKS_ORDER_LIST,
+	ADD_FOOD_ORDER_LIST,
+	ADD_DRINKS_ORDER_LIST,
+	REMOVE_FOOD_ORDER_LIST,
+	REMOVE_DRINKS_ORDER_LIST,
+	CLEAR_FILTERED_LISTS,
 } from "./action-types";
 
 export function actionHideFoodFilter() {
@@ -33,10 +36,22 @@ export function actionUpdateDrinksList(payload: any) {
 	return { type: UPDATE_DRINKS_LIST, payload };
 }
 
-export function actionUpdateFoodOrderList(payload: any) {
-	return { type: UPDATE_FOOD_ORDER_LIST, payload };
+export function actionAddFoodOrderList(payload: any) {
+	return { type: ADD_FOOD_ORDER_LIST, payload };
 }
 
-export function actionUpdateDrinksOrderList(payload: any) {
-	return { type: UPDATE_DRINKS_ORDER_LIST, payload };
+export function actionAddDrinksOrderList(payload: any) {
+	return { type: ADD_DRINKS_ORDER_LIST, payload };
+}
+
+export function actionRemoveFoodOrderList(payload: any) {
+	return { type: REMOVE_FOOD_ORDER_LIST, payload };
+}
+
+export function actionRemoveDrinksOrderList(payload: any) {
+	return { type: REMOVE_DRINKS_ORDER_LIST, payload };
+}
+
+export function actionClearFilteredLists() {
+	return { type: CLEAR_FILTERED_LISTS };
 }

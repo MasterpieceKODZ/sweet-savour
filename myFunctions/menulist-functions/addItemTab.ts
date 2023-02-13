@@ -1,6 +1,6 @@
 import {
-	actionUpdateDrinksOrderList,
-	actionUpdateFoodOrderList,
+	actionAddDrinksOrderList,
+	actionAddFoodOrderList,
 } from "../../redux/action-creators";
 
 export function addDishToTab(dish: any, dispatch: any) {
@@ -41,11 +41,11 @@ export function addDishToTab(dish: any, dispatch: any) {
 		orderObj.pref = dishPrefValue;
 	}
 
-	dispatch(actionUpdateFoodOrderList(orderObj));
+	dispatch(actionAddFoodOrderList(orderObj));
 }
 
 export function addDrinkToTab(drink: any, dispatch: any) {
 	const drinkOrderObj = { name: drink.name, price: drink.price };
 
-	dispatch(actionUpdateDrinksOrderList(drinkOrderObj));
+	dispatch(actionAddDrinksOrderList(drinkOrderObj));
 }

@@ -14,6 +14,8 @@ export function myReducer(state: any = initialState, { type, payload }: any) {
 			return { ...initialState, filteredFoodList: payload };
 		case "UPDATE_DRINKS_LIST":
 			return { ...initialState, filteredDrinksList: payload };
+		case "CLEAR_FILTERED_LISTS":
+			return { ...initialState, filteredDrinksList: [], filteredFoodList: [] };
 		default:
 			return state;
 	}

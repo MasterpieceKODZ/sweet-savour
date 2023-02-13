@@ -7,6 +7,7 @@
 In this project I have used...
 
 - React
+- Typescript
 - NextJS
 - SASS
 - REDUX
@@ -31,6 +32,10 @@ When the filter icon on the food or drink tab is click the filter options bottom
 Each filter options on either list (food or drink) has an associated filter console where the user can specify prefrences and filter out unwanted items from the list.
 
 The floating action button on the bottom right of the menulist page directs the user to the orderlist page where the user can review and complete their order by making payment P.S there is no realtime payment gateway on this website as it is not a production project.
+
+The orderlist page shows all the items selected by the user and items can be removed from the list by clicking the remove button (red xmark icon at the end of each item ). The orderlist page is designed such that when the user navigates back to menulist either by the floating action button on the page or the browser default back button the filtered list is clear and the menulist is refreshed
+
+The **_make payment_** button on the orderlist page simulates a payment action as i said earlier there is no real world payment gateway because this is a frontend demo project. when the user makes payment the user is shown a preview of their order invoice.
 
 ## Refrence
 
@@ -151,9 +156,19 @@ The _**myFunctions**_ folder in the root folder contains some functions seperate
 
 - #### **showHideListTab.ts/showFoodList**
 
-  **_params_** (none) **_return_** : none
+  **_params_** (none) **_return_** : void
   This function brings the foodlist into view in the tab layout, by removing the show class from all _list_ and putting it in the food list alone
 
 - #### **showHideListTab.ts/showDrinkList**
-  **_params_** (none) **_return_** : none
+
+  **_params_** (none) **_return_** : void
   This function brings the drinklist into view in the tab layout, by removing the show class from all _list_ and putting it in the drink list alone
+
+- #### **showHideOrderList.ts/showFoodOrderList**
+
+  **_params_** (none) **_return_**: void
+  This function changes the orderlist tab from drinks to food list
+
+- #### **showHideOrderList.ts/showDrinkOrderList**
+  **_params_** (none) **_return_**: void
+  This function changes the orderlist tab from food to drinks list
