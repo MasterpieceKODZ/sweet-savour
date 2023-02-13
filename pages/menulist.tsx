@@ -30,10 +30,12 @@ import {
 	showDrinkList,
 	showFoodList,
 } from "../myFunctions/menulist-functions/showHideListTab";
-import Link from "next/link";
+import gotoOrderReview from "../myFunctions/menulist-functions/gotoOrderReviewFunction";
+import { useRouter } from "next/router";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	const dispatch: any = useAppDispatch();
+	const router = useRouter()
 
 	// if foodFilter state is hidden the food list filter options bottom navbar is dismissed and when it is shown bottom navbar is visible
 	const foodFilter = useAppSelector((state) => state.appState.foodFilter);
@@ -475,19 +477,16 @@ const Menulist = ({ foodList, drinkList }: any) => {
 					</div>
 				</div>
 			</div>
-			<Link
-				className={`btn-show-orderlist-link`}
-				href="/orderlist"
-				passHref>
-				<div
-					className={`btn-show-orderlist`}
-					title="show order list">
-					<i className="fa-solid fa-clipboard-list"></i>
-					<div className={`order-list-badge ${orderListLength ? "show" : ""}`}>
-						{orderListLength > 9 ? "9+" : orderListLength}
-					</div>
+
+			<div
+				className={`btn-show-orderlist`}
+				title="show order list"
+				onClick={() => gotoOrderReview(router, foodOrderList, drinksOrderList)}>
+				<i className="fa-solid fa-clipboard-list"></i>
+				<div className={`order-list-badge ${orderListLength ? "show" : ""}`}>
+					{orderListLength > 9 ? "9+" : orderListLength}
 				</div>
-			</Link>
+			</div>
 
 			<div className="ingredients-list-modal">
 				<ul className="ingredients-list"></ul>
