@@ -17,8 +17,6 @@ export function addDishToTab(dish: any, dispatch: any, foodlist: object[]) {
 			: document.querySelectorAll(`.${dish.id.trim()}-option-check`);
 
 	if (typeof dishOptionsChk != "string") {
-		console.log(dishOptionsChk);
-
 		dishOptionsChk.forEach((chk: any) => {
 			if (chk.checked) {
 				dishOptions.push(chk.name);
@@ -36,7 +34,7 @@ export function addDishToTab(dish: any, dispatch: any, foodlist: object[]) {
 	const dishPrefValue = dishPrefInp.value.trim();
 
 	const orderObj: any = {
-		name: dish.name,
+		name: dish.name.trim(),
 		price: dish.price,
 		id: foodlist.length
 			? getRandomIdForNewOrderItem(foodlist.length)

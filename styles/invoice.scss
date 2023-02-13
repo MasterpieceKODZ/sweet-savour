@@ -8,28 +8,28 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
 }
 
 .invoice-page-title {
     font-family: $lobster;
+    padding: 7px 10px;
+    text-align: center;
 }
 
 .invoice-host {
     width: 95%;
     max-width: 400px;
-    height: 90%;
-    max-height: 90%;
+    height: calc(100% - 95px);
+    max-height: calc(100% - 95px);
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 1fr auto auto;
     row-gap: 5px;
     overflow: hidden;
     border: 1px solid #222222;
     border-radius: 1px;
-    margin-top: 10px;
-
 }
 
 .invoice-container {
@@ -92,6 +92,19 @@
     font-size: 15px;
 }
 
+.invoice-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        font-family: monospace;
+        padding: 3px 5px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
 .invoice-label {
     display: flex;
     align-items: center;
@@ -101,8 +114,7 @@
 
 .invoice-label-text {
     font-family: monospace;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 12px;
 }
 
 .invoice-label-sweet-savor {
@@ -126,7 +138,7 @@
     padding: 5px 10px;
     border-radius: 5px;
     position: absolute;
-    bottom: 70px;
+    bottom: 110px;
     right: 20px;
     font-size: 20px;
     color: #383838;

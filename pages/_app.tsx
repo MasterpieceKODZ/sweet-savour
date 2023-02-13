@@ -41,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					<title>Sweet Savor</title>
 					<meta
 						name="description"
-						content="food and drinks ordering app for sweet savour restaurant"
+						content="sweet savour is a restaurant that provides your with an to order your food without leaving your place of comfort."
 					/>
 					<link
 						rel="icon"

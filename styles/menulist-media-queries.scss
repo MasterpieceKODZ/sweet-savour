@@ -20,6 +20,12 @@
     }
 }
 
+@media screen and (max-height : 500px) {
+    .list {
+        padding-block: 5px;
+    }
+}
+
 @media screen and (min-width : 400px) {
     .dish-img {
         height: 250px;

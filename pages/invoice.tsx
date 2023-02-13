@@ -7,6 +7,7 @@ import {
 	actionClearOrderLists,
 } from "../redux/action-creators";
 import { useRouter } from "next/router";
+import getOrderListTotalPrice from "../myFunctions/menulist-functions/orderTotalPrice";
 const Invoice = () => {
 	const foodOrderList: object[] = useAppSelector(
 		(state) => state.order.foodlist,
@@ -87,6 +88,10 @@ const Invoice = () => {
 							<></>
 						)}
 					</div>
+				</div>
+				<div className="invoice-total">
+					<p>Total</p>
+					<p>${getOrderListTotalPrice(foodOrderList,drinkOrderList)}</p>
 				</div>
 				<div className="invoice-label">
 					<p className="invoice-label-text invoice-label-sweet-savour">
