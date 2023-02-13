@@ -35,7 +35,7 @@ The floating action button on the bottom right of the menulist page directs the 
 
 The orderlist page shows all the items selected by the user and items can be removed from the list by clicking the remove button (red xmark icon at the end of each item ). The orderlist page is designed such that when the user navigates back to menulist either by the floating action button on the page or the browser default back button the filtered list is clear and the menulist is refreshed
 
-The **_make payment_** button on the orderlist page simulates a payment action as i said earlier there is no real world payment gateway because this is a frontend demo project. when the user makes payment the user is shown a preview of their order invoice.
+The **_make payment_** button on the orderlist page simulates a payment action, as I said earlier there is no real world payment gateway because this is a frontend demo project. when the user makes payment the user is shown a preview of their order invoice.
 
 ## Refrence
 
@@ -175,5 +175,10 @@ The _**myFunctions**_ folder in the root folder contains some functions seperate
   This function changes the orderlist tab from drinks to food list
 
 - #### **showHideOrderList.ts/showDrinkOrderList**
+
   **_params_** (none) **_return_**: void
   This function changes the orderlist tab from food to drinks list
+
+- #### **orderTotalPrice.ts/getOrderListTotalPrice**
+  **_params_** (foodlist : objeect[], drinkslist : object[]) : **_returns_** : string
+  This function calculates the total price of all items on the orderlist and rounds off the result to a two decimal place number returned as a string
