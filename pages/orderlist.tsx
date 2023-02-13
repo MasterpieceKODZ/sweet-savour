@@ -46,14 +46,20 @@ const OrderList = () => {
 				<div className="orderlist-tabs-host">
 					<div
 						className={`orderlist-tab order-food-tab ${
-							foodOrderListState.length ? "active" : ""
+							foodOrderListState.length
+								? "active"
+								: !drinkOrderListState.length && foodOrderListState.length
+								? "active"
+								: ""
 						}`}
 						onClick={showFoodOrderList}>
 						Food
 					</div>
 					<div
 						className={`orderlist-tab order-drink-tab ${
-							!foodOrderListState.length ? "active" : ""
+							!foodOrderListState.length && drinkOrderListState.length
+								? "active"
+								: ""
 						}`}
 						onClick={showDrinkOrderList}>
 						Drink
@@ -102,7 +108,11 @@ const OrderList = () => {
 					</div>
 				</div>
 			</div>
-			<button className="btn-payment">Make Payment</button>
+			<Link
+				className="btn-payment"
+				href="/invoice">
+				Make Payment
+			</Link>
 			<Link
 				href="/menulist"
 				passHref

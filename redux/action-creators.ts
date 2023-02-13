@@ -10,6 +10,7 @@ import {
 	REMOVE_FOOD_ORDER_LIST,
 	REMOVE_DRINKS_ORDER_LIST,
 	CLEAR_FILTERED_LISTS,
+	CLEAR_ORDER_LISTS,
 } from "./action-types";
 
 export function actionHideFoodFilter() {
@@ -54,4 +55,8 @@ export function actionRemoveDrinksOrderList(payload: any) {
 
 export function actionClearFilteredLists() {
 	return { type: CLEAR_FILTERED_LISTS };
+}
+
+export function actionClearOrderLists() {
+	return { type: CLEAR_ORDER_LISTS };
 }

@@ -16,14 +16,16 @@ export default function orderListReducer(
 			return { ...state, drinkslist: newDrinkList };
 		case "REMOVE_FOOD_ORDER_LIST":
 			const newFoodListR = state.foodlist.filter(
-				(food: any) => food.name != payload.name,
+				(food: any) => food.id != payload.id,
 			);
 			return { ...state, foodlist: newFoodListR };
 		case "REMOVE_DRINKS_ORDER_LIST":
 			const newDrinkListR = state.drinkslist.filter(
-				(drink: any) => drink.name != payload.name,
+				(drink: any) => drink.id != payload.id,
 			);
 			return { ...state, drinkslist: newDrinkListR };
+		case "CLEAR_ORDER_LISTS":
+			return { ...state, drinkslist: [], foodlist: [] };
 		default:
 			return state;
 	}

@@ -154,6 +154,11 @@ The _**myFunctions**_ folder in the root folder contains some functions seperate
   **_params_** (drink: any,dispatch : any) **_return_** : void
   This function adds a drink to the drinks order list state in the redux store by creating an object with the name and price of the drink which is then added to the drinks order list state
 
+- #### **addItemTab.ts/getRandomIdForNewOrderItem**
+
+  **_params_** : (listLength: number) : **_return_** : number
+  This function generates a random id and used to identify each item on the orderlist
+
 - #### **showHideListTab.ts/showFoodList**
 
   **_params_** (none) **_return_** : void

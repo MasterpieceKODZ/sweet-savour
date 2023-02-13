@@ -3,7 +3,11 @@ import {
 	actionAddFoodOrderList,
 } from "../../redux/action-creators";
 
-export function addDishToTab(dish: any, dispatch: any) {
+function getRandomIdForNewOrderItem(listLength: number) {
+	return (Math.random() * 1000) / listLength;
+}
+
+export function addDishToTab(dish: any, dispatch: any, foodlist: object[]) {
 	const dishOptions: string[] = [];
 
 	// get all selected dish options
@@ -31,7 +35,13 @@ export function addDishToTab(dish: any, dispatch: any) {
 	);
 	const dishPrefValue = dishPrefInp.value.trim();
 
-	const orderObj: any = { name: dish.name, price: dish.price };
+	const orderObj: any = {
+		name: dish.name,
+		price: dish.price,
+		id: foodlist.length
+			? getRandomIdForNewOrderItem(foodlist.length)
+			: getRandomIdForNewOrderItem(1),
+	};
 
 	if (selectedDishOptions) {
 		orderObj.options = selectedDishOptions;
@@ -44,8 +54,14 @@ export function addDishToTab(dish: any, dispatch: any) {
 	dispatch(actionAddFoodOrderList(orderObj));
 }
 
-export function addDrinkToTab(drink: any, dispatch: any) {
-	const drinkOrderObj = { name: drink.name, price: drink.price };
+export function addDrinkToTab(drink: any, dispatch: any, drinklist: object[]) {
+	const drinkOrderObj = {
+		name: drink.name,
+		price: drink.price,
+		id: drinklist.length
+			? getRandomIdForNewOrderItem(drinklist.length)
+			: getRandomIdForNewOrderItem(1),
+	};
 
 	dispatch(actionAddDrinksOrderList(drinkOrderObj));
 }

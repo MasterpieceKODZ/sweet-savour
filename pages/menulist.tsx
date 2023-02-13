@@ -35,7 +35,7 @@ import { useRouter } from "next/router";
 
 const Menulist = ({ foodList, drinkList }: any) => {
 	const dispatch: any = useAppDispatch();
-	const router = useRouter()
+	const router = useRouter();
 
 	// if foodFilter state is hidden the food list filter options bottom navbar is dismissed and when it is shown bottom navbar is visible
 	const foodFilter = useAppSelector((state) => state.appState.foodFilter);
@@ -198,7 +198,7 @@ const Menulist = ({ foodList, drinkList }: any) => {
 											<button
 												className="btn-add-food"
 												onClick={(e) => {
-													addDishToTab(item, dispatch);
+													addDishToTab(item, dispatch, dishList);
 												}}>
 												Add To My Tab
 											</button>
@@ -367,7 +367,9 @@ const Menulist = ({ foodList, drinkList }: any) => {
 										<div className="drink-price">${item.price}</div>
 										<button
 											className="btn-add-drink"
-											onClick={() => addDrinkToTab(item, dispatch)}>
+											onClick={() =>
+												addDrinkToTab(item, dispatch, newDrinksList)
+											}>
 											Add To My Tab
 										</button>
 									</div>
