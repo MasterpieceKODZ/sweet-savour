@@ -4,6 +4,8 @@
 
 **Discalimer** all data used in this project are **_imaginative_** and not proven to be true in real world as this is only a demo project.
 
+This app is hosted on Vercel [click here](www.sweet-savour.vercel.app) to visit sweet savour on your browser
+
 In this project I have used...
 
 - React
